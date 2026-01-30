@@ -4,6 +4,8 @@ const flashcardsData = {
         "move": "Bevægelser", 
         "grade": "Gradering",
         "body": "Kropsposition",
+        "wall": "Vægtyper",
+        "gear": "Udstyr",
         "general": "Generelt"
     },
     
@@ -103,6 +105,18 @@ const flashcardsData = {
             term: "Volume",
             definition: "Store, skruede former på væggen der bruges som greb eller fodtrin. Ofte brugt i moderne routesetting.",
             example: "\"Hele boulderen er sat på volumener\"",
+            category: "grip"
+        },
+        {
+            term: "Chip",
+            definition: "Et meget lille klatregreb, ofte sat på med træskruer. Typisk brugt til tekniske problemer.",
+            example: "\"Der er kun chips på den slab - kræver præcist fodarbejde\"",
+            category: "grip"
+        },
+        {
+            term: "Makro",
+            definition: "Et meget stort klatregreb. Det modsatte af chip.",
+            example: "\"Hele volumen er én stor makro du kan wrappe rundt om\"",
             category: "grip"
         },
         
@@ -225,6 +239,30 @@ const flashcardsData = {
             term: "Rockover",
             definition: "At flytte vægten helt over på en fod ved at vippe hoften op og over.",
             example: "\"Rockover på højre fod og pres dig op på den næste liste\"",
+            category: "move"
+        },
+        {
+            term: "Bathook",
+            definition: "Et tåhook med begge fødder på samme greb, som en flagermus der hænger. Også kaldet 'bat hang'.",
+            example: "\"Der er en fed bathook-rest midt på taget\"",
+            category: "move"
+        },
+        {
+            term: "Spotte",
+            definition: "At sikre en anden klatrer ved at stå klar til at guide deres fald. Holder hænderne tæt på deres ryg/hofter.",
+            example: "\"Kan du spotte mig på det highball problem?\"",
+            category: "move"
+        },
+        {
+            term: "Siddestart",
+            definition: "At starte et problem siddende på jorden med numsen i crashpadden.",
+            example: "\"Det er en siddestart - du skal helt ned før du går\"",
+            category: "move"
+        },
+        {
+            term: "Ståstart",
+            definition: "At starte et problem stående. Det normale udgangspunkt for de fleste bouldere.",
+            example: "\"Ståstarten er 6A, men siddestart-versionen er 6C\"",
             category: "move"
         },
         
@@ -514,6 +552,82 @@ const flashcardsData = {
             definition: "At klatre ned fra toppen i stedet for at hoppe. Bedre for knæ og ankler.",
             example: "\"Husk at downclimbe på de høje bouldere\"",
             category: "general"
+        },
+        
+        // ===== VÆGTYPER (4 kort) =====
+        {
+            term: "Face",
+            definition: "En lodret klatrevæg (0 graders hældning). Også kaldet facevæg.",
+            example: "\"Den facevæg kræver præcist fodarbejde\"",
+            category: "wall"
+        },
+        {
+            term: "Prow",
+            definition: "En type overhængende klatrevæg formet som en skibsbov. Udfordrer både styrke og teknik.",
+            example: "\"Der er sat nye problemer på den store prow\"",
+            category: "wall"
+        },
+        {
+            term: "Tag",
+            definition: "En horisontal væg man klatrer på undersiden af. Det mest krævende terræn for core og armstyrke.",
+            example: "\"Tag-sektionen er brutal - hold tension hele vejen!\"",
+            category: "wall"
+        },
+        {
+            term: "Dieder",
+            definition: "Et indadgående hjørne på klatrevæggen. God til at stemme med fødder og ryg.",
+            example: "\"Brug diederen til at hvile i - stem dig fast\"",
+            category: "wall"
+        },
+        
+        // ===== UDSTYR (8 kort) =====
+        {
+            term: "Kalk",
+            definition: "Magnesiumkarbonat - det hvide pulver klatrere bruger på hænderne for bedre friktion.",
+            example: "\"Jeg skal have mere kalk på - grebene er slidte\"",
+            category: "gear"
+        },
+        {
+            term: "Kalkpose",
+            definition: "En lille taske til kalk, ofte med børste og andre småting. Bæres i bæltet eller sættes ved væggen.",
+            example: "\"Min kalkpose har plads til både loose chalk og en cube\"",
+            category: "gear"
+        },
+        {
+            term: "Børste",
+            definition: "Bruges til at rense greb for sved, fedt og gammelt kalk. Vigtig for at genoprette friktion.",
+            example: "\"Børst lige de crimps - de er helt fedtede\"",
+            category: "gear"
+        },
+        {
+            term: "Crash pad",
+            definition: "En sammenklappelig madras man lægger under boulderen. Bæres som rygsæk. Essentiel til outdoor bouldering.",
+            example: "\"Vi skal bruge mindst tre crash pads til det highball\"",
+            category: "gear"
+        },
+        {
+            term: "Hangboard",
+            definition: "Et træningsredskab med forskellige grebtyper man hænger i. Bygger fingerstyrke.",
+            example: "\"20 sekunders hangs på hangboardet hver dag\"",
+            category: "gear"
+        },
+        {
+            term: "Campusboard",
+            definition: "Et træningsredskab med lister i forskellige størrelser til eksplosiv træning uden fødder.",
+            example: "\"Campus rungs er morderiske for fingrene - varm godt op først!\"",
+            category: "gear"
+        },
+        {
+            term: "Griptape",
+            definition: "Sandpapir med klæbeside der sættes på volumener eller væggen for ekstra friktion.",
+            example: "\"Der er griptape på den volume - brug det som fodtrin\"",
+            category: "gear"
+        },
+        {
+            term: "Klatresko",
+            definition: "Specialsko med stram pasform og klistret gummi. Findes i forskellige former til forskellige stilarter.",
+            example: "\"Mine aggressive klatresko er bedst til overhæng\"",
+            category: "gear"
         }
     ]
 };

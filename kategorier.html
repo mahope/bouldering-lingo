@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="da" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Klatreterm kategorier – Greb, bevægelser, gradering & mere 🧗</title>
+    <meta name="description" content="Udforsk klatretermer opdelt i 7 kategorier: Greb, Bevægelser, Gradering, Kropsposition, Vægtyper, Udstyr og Generelt. Start med den kategori der interesserer dig.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://boulder.holstjensen.nu/kategorier.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boulder.holstjensen.nu/kategorier.html">
+    <meta property="og:title" content="Klatreterm kategorier 🧗">
+    <meta property="og:description" content="Udforsk klatretermer opdelt i 7 kategorier. Start med den der interesserer dig!">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Bouldering Lingo">
+    <meta property="og:image" content="https://boulder.holstjensen.nu/images/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Klatreterm kategorier 🧗">
+    <meta name="twitter:description" content="Udforsk klatretermer opdelt i 7 kategorier.">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="klatretermer kategorier, greb, bevægelser, gradering, klatreudstyr, vægtyper">
+    <meta name="author" content="Mads Holst Jensen">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=20260131c">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Klatreterm kategorier",
+        "description": "Udforsk klatretermer opdelt i 7 kategorier",
+        "url": "https://boulder.holstjensen.nu/kategorier.html",
+        "hasPart": [
+            {"@type": "ItemList", "name": "Greb", "description": "Forskellige typer klatregreb"},
+            {"@type": "ItemList", "name": "Bevægelser", "description": "Klatrebevægelser og teknikker"},
+            {"@type": "ItemList", "name": "Gradering", "description": "Graderingssystemer og niveauer"},
+            {"@type": "ItemList", "name": "Kropsposition", "description": "Kropsstillinger og teknikker"},
+            {"@type": "ItemList", "name": "Vægtyper", "description": "Forskellige typer klatrevægge"},
+            {"@type": "ItemList", "name": "Udstyr", "description": "Klatreudstyr og tilbehør"},
+            {"@type": "ItemList", "name": "Generelt", "description": "Generelle klatretermer og kultur"}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <div class="app page-content">
+        <header role="banner">
+            <nav class="main-nav" role="navigation" aria-label="Hovednavigation">
+                <a href="/" class="nav-logo">🧗 Bouldering Lingo</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Åbn menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Flashcards</a></li>
+                    <li><a href="/termer.html">Alle termer</a></li>
+                    <li><a href="/kategorier.html" class="active">Kategorier</a></li>
+                    <li><a href="/haller.html">Klatrehaller</a></li>
+                    <li><a href="/om.html">Om</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Skift tema">
+                    <span class="theme-icon sun">☀️</span>
+                    <span class="theme-icon moon">🌙</span>
+                </button>
+            </nav>
+        </header>
+
+        <main class="content-section">
+            <h1>Kategorier</h1>
+            <p class="intro-text">Vælg en kategori for at øve specifikke typer klatretermer.</p>
+            
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Generated by JS -->
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Flashcards</a>
+                <a href="/termer.html">Alle termer</a>
+                <a href="/kategorier.html">Kategorier</a>
+                <a href="/haller.html">Klatrehaller</a>
+                <a href="/hvad-er-bouldering.html">Hvad er bouldering?</a>
+                <a href="/begynderguide.html">Begynderguide</a>
+            </div>
+            <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer">Mahope</a></p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
+            navLinks.classList.toggle('open');
+        });
+
+        // Category info
+        const categoryInfo = {
+            grip: {
+                icon: '✊',
+                description: 'Lær de forskellige typer greb du møder på væggen - fra crimps og slopers til pinches og pockets.',
+                examples: ['Crimp', 'Sloper', 'Jug', 'Pinch', 'Pocket']
+            },
+            move: {
+                icon: '🤸',
+                description: 'Mestre de bevægelser og teknikker der gør dig til en bedre klatrer - fra dynamiske moves til præcist fodarbejde.',
+                examples: ['Dyno', 'Heel hook', 'Drop knee', 'Mantle', 'Flag']
+            },
+            grade: {
+                icon: '📊',
+                description: 'Forstå graderingssystemerne og hvordan sværhedsgrad vurderes i klatring.',
+                examples: ['V-grade', 'Font', 'Soft', 'Sandbagged', 'Benchmark']
+            },
+            body: {
+                icon: '🧘',
+                description: 'Lær om kropspositioner og teknikker der optimerer din klatring og sparer energi.',
+                examples: ['Tension', 'Lock-off', 'Straight arms', 'Core', 'Silent feet']
+            },
+            wall: {
+                icon: '🧱',
+                description: 'Bliv fortrolig med de forskellige typer vægge og strukturer du klatrer på.',
+                examples: ['Slab', 'Overhang', 'Arête', 'Spray Wall', 'Moonboard']
+            },
+            gear: {
+                icon: '🎒',
+                description: 'Lær om det udstyr der bruges til bouldering og træning.',
+                examples: ['Kalk', 'Crash pad', 'Hangboard', 'Klatresko', 'Børste']
+            },
+            general: {
+                icon: '🗣️',
+                description: 'Forstå den generelle klatrekultur, etikette og terminologi.',
+                examples: ['Send', 'Beta', 'Flash', 'Project', 'Crux']
+            }
+        };
+
+        // Generate categories
+        const categoriesGrid = document.getElementById('categoriesGrid');
+        
+        Object.entries(flashcardsData.categories).forEach(([key, name]) => {
+            const count = flashcardsData.cards.filter(c => c.category === key).length;
+            const info = categoryInfo[key];
+            
+            const card = document.createElement('div');
+            card.className = 'category-card';
+            card.innerHTML = `
+                <div class="category-icon">${info.icon}</div>
+                <h2>${name}</h2>
+                <span class="category-count">${count} termer</span>
+                <p class="category-description">${info.description}</p>
+                <div class="category-examples">
+                    <span>Eksempler:</span>
+                    ${info.examples.map(e => `<span class="example-tag">${e}</span>`).join('')}
+                </div>
+                <div class="category-actions">
+                    <a href="/?category=${key}" class="btn btn-knew">Start flashcards →</a>
+                    <a href="/termer.html?category=${key}" class="btn btn-skip">Se alle termer</a>
+                </div>
+            `;
+            categoriesGrid.appendChild(card);
+        });
+    </script>
+</body>
+</html>

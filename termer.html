@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="da" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Alle klatretermer – 110+ bouldering og klatretermer på dansk 🧗</title>
+    <meta name="description" content="Komplet liste over 110+ danske klatretermer. Søg og filtrer efter kategori. Fra crimp til dyno, fra sloper til heel hook - find alle klatretermer her.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://boulder.holstjensen.nu/termer.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boulder.holstjensen.nu/termer.html">
+    <meta property="og:title" content="Alle klatretermer – 110+ termer på dansk 🧗">
+    <meta property="og:description" content="Komplet liste over 110+ danske klatretermer. Søg og filtrer efter kategori.">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Bouldering Lingo">
+    <meta property="og:image" content="https://boulder.holstjensen.nu/images/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Alle klatretermer – 110+ termer 🧗">
+    <meta name="twitter:description" content="Komplet liste over 110+ danske klatretermer. Søg og filtrer.">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="klatretermer, bouldering termer, klatreordbog, crimp, dyno, sloper, heel hook, climbing terminology, dansk">
+    <meta name="author" content="Mads Holst Jensen">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=20260131c">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Klatretermer",
+        "description": "Komplet liste over 110+ danske klatretermer med definitioner",
+        "url": "https://boulder.holstjensen.nu/termer.html",
+        "numberOfItems": 110,
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Crimp", "description": "Et greb hvor fingrene er bøjet i første led"},
+            {"@type": "ListItem", "position": 2, "name": "Dyno", "description": "Et dynamisk spring hvor begge hænder slipper væggen"},
+            {"@type": "ListItem", "position": 3, "name": "Sloper", "description": "Et afrundet greb uden kanter"},
+            {"@type": "ListItem", "position": 4, "name": "Heel Hook", "description": "At bruge hælen på et greb og trække med baglåret"}
+        ]
+    }
+    </script>
+</head>
+<body>
+    <div class="app page-content">
+        <header role="banner">
+            <nav class="main-nav" role="navigation" aria-label="Hovednavigation">
+                <a href="/" class="nav-logo">🧗 Bouldering Lingo</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Åbn menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Flashcards</a></li>
+                    <li><a href="/termer.html" class="active">Alle termer</a></li>
+                    <li><a href="/kategorier.html">Kategorier</a></li>
+                    <li><a href="/haller.html">Klatrehaller</a></li>
+                    <li><a href="/om.html">Om</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Skift tema">
+                    <span class="theme-icon sun">☀️</span>
+                    <span class="theme-icon moon">🌙</span>
+                </button>
+            </nav>
+        </header>
+
+        <main class="content-section">
+            <h1>Alle klatretermer</h1>
+            <p class="intro-text">Søg blandt <span id="termCount">110+</span> klatretermer eller filtrer efter kategori.</p>
+            
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Søg efter term..." aria-label="Søg efter term">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="filter-buttons" id="filterButtons">
+                    <button class="filter-btn active" data-category="all">Alle</button>
+                    <!-- Generated by JS -->
+                </div>
+            </div>
+
+            <div class="terms-grid" id="termsGrid">
+                <!-- Generated by JS -->
+            </div>
+
+            <div class="no-results" id="noResults" hidden>
+                <p>😕 Ingen termer fundet. Prøv en anden søgning.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Flashcards</a>
+                <a href="/termer.html">Alle termer</a>
+                <a href="/kategorier.html">Kategorier</a>
+                <a href="/haller.html">Klatrehaller</a>
+                <a href="/hvad-er-bouldering.html">Hvad er bouldering?</a>
+                <a href="/begynderguide.html">Begynderguide</a>
+            </div>
+            <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer">Mahope</a></p>
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
+            navLinks.classList.toggle('open');
+        });
+
+        // Terms functionality
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.getElementById('filterButtons');
+        const termsGrid = document.getElementById('termsGrid');
+        const noResults = document.getElementById('noResults');
+        const termCount = document.getElementById('termCount');
+        
+        let activeCategory = 'all';
+        let expandedTerm = null;
+
+        // Generate filter buttons
+        Object.entries(flashcardsData.categories).forEach(([key, name]) => {
+            const btn = document.createElement('button');
+            btn.className = 'filter-btn';
+            btn.dataset.category = key;
+            btn.textContent = name;
+            filterButtons.appendChild(btn);
+        });
+
+        // Update term count
+        termCount.textContent = flashcardsData.cards.length;
+
+        function renderTerms() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            let filtered = flashcardsData.cards.filter(card => {
+                const matchesCategory = activeCategory === 'all' || card.category === activeCategory;
+                const matchesSearch = !searchTerm || 
+                    card.term.toLowerCase().includes(searchTerm) ||
+                    card.definition.toLowerCase().includes(searchTerm);
+                return matchesCategory && matchesSearch;
+            });
+
+            // Sort alphabetically
+            filtered.sort((a, b) => a.term.localeCompare(b.term, 'da'));
+
+            if (filtered.length === 0) {
+                termsGrid.innerHTML = '';
+                noResults.hidden = false;
+                return;
+            }
+
+            noResults.hidden = true;
+            termsGrid.innerHTML = filtered.map(card => `
+                <div class="term-card ${expandedTerm === card.term ? 'expanded' : ''}" data-term="${card.term}">
+                    <div class="term-header">
+                        <h3>${card.term}</h3>
+                        <span class="term-category">${flashcardsData.categories[card.category]}</span>
+                    </div>
+                    <div class="term-content">
+                        <p class="term-definition">${card.definition}</p>
+                        ${card.example ? `<p class="term-example">${card.example}</p>` : ''}
+                    </div>
+                </div>
+            `).join('');
+
+            // Add click handlers
+            document.querySelectorAll('.term-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const term = card.dataset.term;
+                    if (expandedTerm === term) {
+                        expandedTerm = null;
+                        card.classList.remove('expanded');
+                    } else {
+                        document.querySelectorAll('.term-card.expanded').forEach(c => c.classList.remove('expanded'));
+                        expandedTerm = term;
+                        card.classList.add('expanded');
+                    }
+                });
+            });
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', renderTerms);
+        
+        filterButtons.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                activeCategory = e.target.dataset.category;
+                renderTerms();
+            }
+        });
+
+        // Initial render
+        renderTerms();
+    </script>
+</body>
+</html>

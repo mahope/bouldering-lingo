@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="da" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Klatrehaller i Danmark – Find dit nærmeste bouldercenter 🧗</title>
+    <meta name="description" content="Komplet oversigt over klatrehaller og bouldercentre i Danmark. Find haller i København, Aarhus, Odense, Aalborg og resten af landet med adresser og links.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://boulder.holstjensen.nu/haller.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://boulder.holstjensen.nu/haller.html">
+    <meta property="og:title" content="Klatrehaller i Danmark 🧗">
+    <meta property="og:description" content="Find klatrehaller og bouldercentre i hele Danmark. København, Aarhus, Odense, Aalborg og mere.">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Bouldering Lingo">
+    <meta property="og:image" content="https://boulder.holstjensen.nu/images/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Klatrehaller i Danmark 🧗">
+    <meta name="twitter:description" content="Find klatrehaller og bouldercentre i hele Danmark.">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="klatrehaller danmark, bouldercentre, klatring københavn, bouldering aarhus, klatrevæg odense, indoor klatring">
+    <meta name="author" content="Mads Holst Jensen">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=20260131c">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Klatrehaller i Danmark",
+        "description": "Oversigt over klatrehaller og bouldercentre i Danmark",
+        "url": "https://boulder.holstjensen.nu/haller.html",
+        "itemListElement": [
+            {
+                "@type": "LocalBusiness",
+                "name": "Boulders Sydhavn",
+                "address": {"@type": "PostalAddress", "addressLocality": "København"},
+                "@id": "https://bfreak.dk/sydhavn"
+            },
+            {
+                "@type": "LocalBusiness", 
+                "name": "Blocs & Walls",
+                "address": {"@type": "PostalAddress", "addressLocality": "København"},
+                "@id": "https://blocsandwalls.com"
+            }
+        ]
+    }
+    </script>
+</head>
+<body>
+    <div class="app page-content">
+        <header role="banner">
+            <nav class="main-nav" role="navigation" aria-label="Hovednavigation">
+                <a href="/" class="nav-logo">🧗 Bouldering Lingo</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Åbn menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Flashcards</a></li>
+                    <li><a href="/termer.html">Alle termer</a></li>
+                    <li><a href="/kategorier.html">Kategorier</a></li>
+                    <li><a href="/haller.html" class="active">Klatrehaller</a></li>
+                    <li><a href="/om.html">Om</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Skift tema">
+                    <span class="theme-icon sun">☀️</span>
+                    <span class="theme-icon moon">🌙</span>
+                </button>
+            </nav>
+        </header>
+
+        <main class="content-section">
+            <h1>Klatrehaller i Danmark</h1>
+            <p class="intro-text">Find dit nærmeste boulder- eller klatrecenter. Søg efter by eller hallens navn.</p>
+            
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Søg efter hal eller by..." aria-label="Søg efter klatrehal">
+                    <span class="search-icon">🔍</span>
+                </div>
+                <div class="filter-buttons" id="filterButtons">
+                    <button class="filter-btn active" data-type="all">Alle</button>
+                    <button class="filter-btn" data-type="boulder">Kun boulder</button>
+                    <button class="filter-btn" data-type="lead">Kun lead/toprope</button>
+                    <button class="filter-btn" data-type="both">Begge</button>
+                </div>
+            </div>
+
+            <div class="halls-grid" id="hallsGrid">
+                <!-- Generated by JS -->
+            </div>
+
+            <div class="no-results" id="noResults" hidden>
+                <p>😕 Ingen haller fundet. Prøv en anden søgning.</p>
+            </div>
+
+            <section class="content-block" style="margin-top: 3rem;">
+                <h2>💡 Kender du en hal vi mangler?</h2>
+                <p>Denne liste er under konstant opdatering. Hvis du kender en klatrehal der ikke er med, så <a href="mailto:mads@mahope.dk">send os en besked</a>!</p>
+            </section>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Flashcards</a>
+                <a href="/termer.html">Alle termer</a>
+                <a href="/kategorier.html">Kategorier</a>
+                <a href="/haller.html">Klatrehaller</a>
+                <a href="/hvad-er-bouldering.html">Hvad er bouldering?</a>
+                <a href="/begynderguide.html">Begynderguide</a>
+            </div>
+            <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer">Mahope</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        themeToggle.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        });
+
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        navToggle.addEventListener('click', () => {
+            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !expanded);
+            navLinks.classList.toggle('open');
+        });
+
+        // Climbing halls data
+        const halls = [
+            // København
+            { name: "Boulders Sydhavn", city: "København", area: "Sydhavn", type: "boulder", url: "https://bfreak.dk/sydhavn", address: "Scandiagade 13, 2450 København SV" },
+            { name: "Boulders Valby", city: "København", area: "Valby", type: "boulder", url: "https://bfreak.dk/valby", address: "Gammel Køge Landevej 3, 2500 Valby" },
+            { name: "Blocs & Walls", city: "København", area: "Refshaleøen", type: "both", url: "https://blocsandwalls.com", address: "Refshalevej 163A, 1432 København K" },
+            { name: "Beta Boulders", city: "København", area: "Nordvest", type: "boulder", url: "https://betaboulders.dk", address: "Rentemestervej 64, 2400 København NV" },
+            { name: "Boulders Amager", city: "København", area: "Amager", type: "boulder", url: "https://bfreak.dk/amager", address: "Prags Boulevard 53, 2300 København S" },
+            { name: "Klatreklubben København (KKK)", city: "København", area: "Nørrebro", type: "both", url: "https://kfreak.dk", address: "Sigurdsgade 27, 2200 København N" },
+            { name: "Nørrebro Klatreklub", city: "København", area: "Nørrebro", type: "lead", url: "https://nklatre.dk", address: "Korsgade 29, 2200 København N" },
+            
+            // Aarhus
+            { name: "Boulders Aarhus", city: "Aarhus", area: "Midtbyen", type: "boulder", url: "https://bfreak.dk/aarhus", address: "Sletvej 30, 8310 Tranbjerg J" },
+            { name: "Klatreklubben Aarhus (AKKU)", city: "Aarhus", area: "Brabrand", type: "both", url: "https://kfreak.dk/aarhus", address: "Edwin Rahrs Vej 54, 8220 Brabrand" },
+            { name: "Gellerup Klatreklub", city: "Aarhus", area: "Gellerup", type: "lead", url: "https://gellerupklatreklub.dk", address: "Gudrunsvej 2, 8220 Brabrand" },
+            
+            // Odense
+            { name: "Boulders Odense", city: "Odense", area: "Midtbyen", type: "boulder", url: "https://bfreak.dk/odense", address: "Edisonsvej 5, 5000 Odense C" },
+            { name: "OKS Klatring", city: "Odense", area: "Bolbro", type: "both", url: "https://oks-klatring.dk", address: "Nyvangsvej 12, 5220 Odense SØ" },
+            
+            // Aalborg
+            { name: "Nordkraft Klatring", city: "Aalborg", area: "Midtbyen", type: "both", url: "https://nordkraft-klatring.dk", address: "Kjellerups Torv 5, 9000 Aalborg" },
+            { name: "Aalborg Klatreklub", city: "Aalborg", area: "Vejgaard", type: "lead", url: "https://aalborgklatreklub.dk", address: "Vestre Havnepromenade 15, 9000 Aalborg" },
+            
+            // Andre byer
+            { name: "Boulders Roskilde", city: "Roskilde", area: "Musicon", type: "boulder", url: "https://bfreak.dk/roskilde", address: "Rabalderstræde 14, 4000 Roskilde" },
+            { name: "Esbjerg Klatreklub", city: "Esbjerg", area: "Midtbyen", type: "both", url: "https://esbjergklatreklub.dk", address: "Gasværksgade 20, 6700 Esbjerg" },
+            { name: "Vejle Klatreklub", city: "Vejle", area: "Spinderihallerne", type: "both", url: "https://vejleklatreklub.dk", address: "Spinderigade 11, 7100 Vejle" },
+            { name: "Silkeborg Klatreklub", city: "Silkeborg", area: "Midtbyen", type: "lead", url: "https://silkeborgklatreklub.dk", address: "Århusvej 55, 8600 Silkeborg" },
+            { name: "Horsens Klatreklub", city: "Horsens", area: "Midtbyen", type: "both", url: "https://horsensklatreklub.dk", address: "Niels Gyldings Gade 3, 8700 Horsens" },
+            { name: "Fredericia Klatreklub", city: "Fredericia", area: "Midtbyen", type: "lead", url: "https://fredericiaklatreklub.dk", address: "Oldenborggade 29, 7000 Fredericia" },
+            { name: "Randers Klatreklub", city: "Randers", area: "Midtbyen", type: "lead", url: "https://randersklatring.dk", address: "Mariagervej 120, 8900 Randers" },
+            { name: "Kolding Klatreklub", city: "Kolding", area: "Bramdrupdam", type: "both", url: "https://koldingklatreklub.dk", address: "Bramdrupdam Industrivej 23, 6000 Kolding" },
+            { name: "Herning Klatreklub", city: "Herning", area: "Midtbyen", type: "lead", url: "https://herningklatreklub.dk", address: "Danmarksgade 34, 7400 Herning" },
+            { name: "Sønderborg Klatreklub", city: "Sønderborg", area: "Midtbyen", type: "lead", url: "https://soenderborgklatreklub.dk", address: "Nørre Havnegade 30, 6400 Sønderborg" },
+            { name: "Næstved Klatreklub", city: "Næstved", area: "Midtbyen", type: "both", url: "https://naestvedklatring.dk", address: "Farimagsvej 45, 4700 Næstved" },
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const filterButtons = document.getElementById('filterButtons');
+        const hallsGrid = document.getElementById('hallsGrid');
+        const noResults = document.getElementById('noResults');
+        
+        let activeType = 'all';
+
+        function getTypeLabel(type) {
+            switch(type) {
+                case 'boulder': return '🪨 Boulder';
+                case 'lead': return '🧗 Lead/Toprope';
+                case 'both': return '🏔️ Begge';
+                default: return type;
+            }
+        }
+
+        function renderHalls() {
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            
+            let filtered = halls.filter(hall => {
+                const matchesType = activeType === 'all' || hall.type === activeType;
+                const matchesSearch = !searchTerm || 
+                    hall.name.toLowerCase().includes(searchTerm) ||
+                    hall.city.toLowerCase().includes(searchTerm) ||
+                    hall.area.toLowerCase().includes(searchTerm);
+                return matchesType && matchesSearch;
+            });
+
+            // Group by city
+            const byCity = filtered.reduce((acc, hall) => {
+                if (!acc[hall.city]) acc[hall.city] = [];
+                acc[hall.city].push(hall);
+                return acc;
+            }, {});
+
+            if (Object.keys(byCity).length === 0) {
+                hallsGrid.innerHTML = '';
+                noResults.hidden = false;
+                return;
+            }
+
+            noResults.hidden = true;
+            
+            // Sort cities: København first, then alphabetically
+            const sortedCities = Object.keys(byCity).sort((a, b) => {
+                if (a === 'København') return -1;
+                if (b === 'København') return 1;
+                if (a === 'Aarhus') return -1;
+                if (b === 'Aarhus') return 1;
+                return a.localeCompare(b, 'da');
+            });
+
+            hallsGrid.innerHTML = sortedCities.map(city => `
+                <div class="city-section">
+                    <h2 class="city-heading">${city}</h2>
+                    <div class="halls-list">
+                        ${byCity[city].map(hall => `
+                            <div class="hall-card">
+                                <div class="hall-header">
+                                    <h3>${hall.name}</h3>
+                                    <span class="hall-type type-${hall.type}">${getTypeLabel(hall.type)}</span>
+                                </div>
+                                <p class="hall-area">📍 ${hall.area}</p>
+                                <p class="hall-address">${hall.address}</p>
+                                <a href="${hall.url}" target="_blank" rel="noopener noreferrer" class="hall-link">
+                                    Besøg hjemmeside →
+                                </a>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', renderHalls);
+        
+        filterButtons.addEventListener('click', (e) => {
+            if (e.target.classList.contains('filter-btn')) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                activeType = e.target.dataset.type;
+                renderHalls();
+            }
+        });
+
+        // Initial render
+        renderHalls();
+    </script>
+</body>
+</html>

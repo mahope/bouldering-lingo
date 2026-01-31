@@ -166,14 +166,27 @@
 <body>
     <div class="app" role="main">
         <header role="banner">
-            <div class="header-top">
-                <h1>🧗 Bouldering Lingo</h1>
+            <nav class="main-nav" role="navigation" aria-label="Hovednavigation">
+                <a href="/" class="nav-logo">🧗 Bouldering Lingo</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Åbn menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/" class="active">Flashcards</a></li>
+                    <li><a href="/termer.html">Alle termer</a></li>
+                    <li><a href="/kategorier.html">Kategorier</a></li>
+                    <li><a href="/haller.html">Klatrehaller</a></li>
+                    <li><a href="/om.html">Om</a></li>
+                </ul>
                 <button class="theme-toggle" id="themeToggle" aria-label="Skift mellem lyst og mørkt tema" title="Skift tema">
                     <span class="theme-icon sun" aria-hidden="true">☀️</span>
                     <span class="theme-icon moon" aria-hidden="true">🌙</span>
                 </button>
+            </nav>
+            <div class="header-content">
+                <h1>🧗 Bouldering Lingo</h1>
+                <p class="subtitle">Lær klatretermer med flashcards</p>
             </div>
-            <p class="subtitle">Lær klatretermer med flashcards</p>
         </header>
 
         <div class="progress-container">
@@ -253,10 +266,32 @@
     </div>
 
     <footer class="site-footer" role="contentinfo">
-        <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Mahope's hjemmeside">Mahope</a></p>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Flashcards</a>
+                <a href="/termer.html">Alle termer</a>
+                <a href="/kategorier.html">Kategorier</a>
+                <a href="/haller.html">Klatrehaller</a>
+                <a href="/hvad-er-bouldering.html">Hvad er bouldering?</a>
+                <a href="/begynderguide.html">Begynderguide</a>
+            </div>
+            <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Mahope's hjemmeside">Mahope</a></p>
+        </div>
     </footer>
 
     <script src="data.js" defer></script>
     <script src="app.js" defer></script>
+    <script>
+        // Mobile nav toggle
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+                navToggle.setAttribute('aria-expanded', !expanded);
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
 </body>
 </html>

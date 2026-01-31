@@ -375,6 +375,11 @@
     (function() {
         'use strict';
         
+        // Analytics helper
+        function trackEvent(name, props = {}) {
+            if (typeof plausible !== 'undefined') plausible(name, { props });
+        }
+        
         // ===== HALL DATA =====
         // Verified Danish climbing gyms with coordinates
         const halls = [
@@ -617,6 +622,7 @@
                     filterButtons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
                     currentFilter = btn.dataset.type;
+                    trackEvent('Filter', { category: currentFilter, page: 'haller' });
                     renderHalls(currentFilter, searchInput.value);
                 });
             });
@@ -626,7 +632,23 @@
                 clearTimeout(searchTimeout);
                 searchTimeout = setTimeout(() => {
                     renderHalls(currentFilter, searchInput.value);
-                }, 200);
+                    // Track search if query is meaningful
+                    if (searchInput.value.trim().length >= 2) {
+                        trackEvent('Search', { query: searchInput.value.trim(), page: 'haller' });
+                    }
+                }, 500);
+            });
+            
+            // Track hall clicks
+            document.getElementById('hallsContainer').addEventListener('click', (e) => {
+                const link = e.target.closest('a[href^="http"]');
+                if (link) {
+                    const hallCard = link.closest('.hall-card');
+                    const hallName = hallCard?.querySelector('.hall-name a')?.textContent;
+                    if (hallName) {
+                        trackEvent('Hall Click', { hall: hallName, url: link.href });
+                    }
+                }
             });
         }
         

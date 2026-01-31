@@ -139,8 +139,14 @@
             
             if (!termsGrid || !filterButtons) return; // Not on terms page
             
+            // Analytics helper
+            function trackEvent(name, props = {}) {
+                if (typeof plausible !== 'undefined') plausible(name, { props });
+            }
+            
             let activeCategory = 'all';
             let expandedTerm = null;
+            let searchTimeout = null;
 
             // Generate filter buttons
             Object.entries(flashcardsData.categories).forEach(([key, name]) => {
@@ -201,18 +207,29 @@
                             document.querySelectorAll('.term-card.expanded').forEach(c => c.classList.remove('expanded'));
                             expandedTerm = term;
                             card.classList.add('expanded');
+                            trackEvent('Term View', { term: term });
                         }
                     });
                 });
             }
 
-            searchInput.addEventListener('input', renderTerms);
+            searchInput.addEventListener('input', () => {
+                renderTerms();
+                // Debounced search tracking
+                clearTimeout(searchTimeout);
+                if (searchInput.value.trim().length >= 2) {
+                    searchTimeout = setTimeout(() => {
+                        trackEvent('Search', { query: searchInput.value.trim(), page: 'termer' });
+                    }, 1000);
+                }
+            });
             
             filterButtons.addEventListener('click', (e) => {
                 if (e.target.classList.contains('filter-btn')) {
                     document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
                     e.target.classList.add('active');
                     activeCategory = e.target.dataset.category;
+                    trackEvent('Filter', { category: activeCategory, page: 'termer' });
                     renderTerms();
                 }
             });

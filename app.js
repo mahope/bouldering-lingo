@@ -1,3 +1,10 @@
+// ===== Plausible Analytics Helper =====
+function trackEvent(name, props = {}) {
+    if (typeof plausible !== 'undefined') {
+        plausible(name, { props });
+    }
+}
+
 // ===== State =====
 let cards = [...flashcardsData.cards];
 let currentIndex = 0;
@@ -151,6 +158,7 @@ function updateStreak() {
 function nextCard() {
     currentIndex++;
     if (currentIndex >= cards.length) {
+        trackEvent('Session Complete', { score: score, total: cards.length, category: activeCategory });
         showCompletion();
         return;
     }
@@ -227,6 +235,7 @@ function bindEvents() {
     // Skip button
     skipBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        trackEvent('Flashcard', { action: 'skip', term: cards[currentIndex]?.term });
         streak = 0;
         updateStreak();
         nextCard();
@@ -235,6 +244,7 @@ function bindEvents() {
     // Knew it button
     knewBtn.addEventListener('click', (e) => {
         e.stopPropagation();
+        trackEvent('Flashcard', { action: 'knew', term: cards[currentIndex]?.term });
         score++;
         streak++;
         scoreEl.textContent = score;
@@ -249,11 +259,13 @@ function bindEvents() {
     
     // Shuffle button
     shuffleBtn.addEventListener('click', () => {
+        trackEvent('Flashcard', { action: 'shuffle' });
         shuffle();
     });
     
     // Reset button
     resetBtn.addEventListener('click', () => {
+        trackEvent('Flashcard', { action: 'reset', score: score, total: cards.length });
         reset();
     });
     
@@ -268,6 +280,7 @@ function bindEvents() {
             
             // Filter and reset
             activeCategory = e.target.dataset.category;
+            trackEvent('Category', { category: activeCategory });
             score = 0;
             streak = 0;
             scoreEl.textContent = score;

@@ -477,9 +477,9 @@ const flashcardsData = {
         },
         {
             term: "Slab",
-            definition: "En væg der hælder bagover (mindre end lodret). Kræver balance og præcision.",
-            example: "\"Jeg hader slab - det kræver for meget balance\"",
-            category: "general"
+            definition: "En væg der hælder bagover (under 90 grader). Kræver ekstrem balance, præcist fodarbejde og tillid til friktionen. Ofte mere mentalt end fysisk krævende.",
+            example: "\"Slab er rent mind game - du skal bare stole på fødderne\"",
+            category: "wall"
         },
         {
             term: "Overhang",
@@ -554,7 +554,7 @@ const flashcardsData = {
             category: "general"
         },
         
-        // ===== VÆGTYPER (4 kort) =====
+        // ===== VÆGTYPER (14 kort) =====
         {
             term: "Face",
             definition: "En lodret klatrevæg (0 graders hældning). Også kaldet facevæg.",
@@ -577,6 +577,60 @@ const flashcardsData = {
             term: "Dieder",
             definition: "Et indadgående hjørne på klatrevæggen. God til at stemme med fødder og ryg.",
             example: "\"Brug diederen til at hvile i - stem dig fast\"",
+            category: "wall"
+        },
+        {
+            term: "Cave",
+            definition: "En kraftigt overhængende vægsektion der danner en hule. Ekstremt styrke- og spændingskrævende.",
+            example: "\"Caven i hjørnet er kun for de stærke - 45 graders overhæng hele vejen\"",
+            category: "wall"
+        },
+        {
+            term: "Barrel",
+            definition: "Et rundet, tøndeformet overhæng hvor vinklen ændrer sig gradvist. Udfordrer kropspositionen konstant.",
+            example: "\"Den barrel er tricky - vinklen ændrer sig hele tiden\"",
+            category: "wall"
+        },
+        {
+            term: "Vertical",
+            definition: "En helt lodret væg på præcis 90 grader. Balancen mellem teknik og styrke.",
+            example: "\"Vertical kræver god teknik - du kan ikke bare trække dig op\"",
+            category: "wall"
+        },
+        {
+            term: "Spray Wall",
+            definition: "En træningsvæg dækket af greb i alle retninger og vinkler. Man kan sætte uendeligt mange problemer.",
+            example: "\"Spray wallen er perfekt til at træne specifikke bevægelser\"",
+            category: "wall"
+        },
+        {
+            term: "Moonboard",
+            definition: "En standardiseret LED-træningsvæg med faste grebpositioner og app-styrede problemer. Bruger 40 graders vinkel og specifikke greb.",
+            example: "\"Jeg træner benchmarks på Moonboard for at måle min fremgang\"",
+            category: "wall"
+        },
+        {
+            term: "Kilter Board",
+            definition: "En justerbar træningsvæg med LED-greb og app-styrede problemer. Kan indstilles fra 0 til 70 grader.",
+            example: "\"Sæt Kilteren på 50 grader - jeg vil træne overhæng i dag\"",
+            category: "wall"
+        },
+        {
+            term: "System Board",
+            definition: "En symmetrisk træningsvæg med identiske greb på begge sider. Bruges til at træne specifikke grebtyper og styrke.",
+            example: "\"Brug system boardet til at isolere dine svage crimp-greb\"",
+            category: "wall"
+        },
+        {
+            term: "Woodie",
+            definition: "En hjemmebygget klatrevæg af træ, ofte i garage eller kælder. Varierer fra simple hangboards til fulde spray walls.",
+            example: "\"Jeg byggede en woodie i garagen under lockdown\"",
+            category: "wall"
+        },
+        {
+            term: "Competition Wall",
+            definition: "En konkurrencevæg designet til bouldering-konkurrencer. Kendetegnet ved store volumener, komplekse vinkler og kreative problemer.",
+            example: "\"Competition wallen har sindssyge 3D-volumener\"",
             category: "wall"
         },
         

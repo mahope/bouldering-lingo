@@ -127,6 +127,99 @@
 
     <script src="data.js"></script>
     <script src="page-scripts.js"></script>
+    <script>
+        // Terms page functionality
+        (function() {
+            const searchInput = document.getElementById('searchInput');
+            const filterButtons = document.getElementById('filterButtons');
+            const termsGrid = document.getElementById('termsGrid');
+            const noResults = document.getElementById('noResults');
+            const termCount = document.getElementById('termCount');
+            
+            if (!termsGrid || !filterButtons) return; // Not on terms page
+            
+            let activeCategory = 'all';
+            let expandedTerm = null;
+
+            // Generate filter buttons
+            Object.entries(flashcardsData.categories).forEach(([key, name]) => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.dataset.category = key;
+                btn.textContent = name;
+                filterButtons.appendChild(btn);
+            });
+
+            // Update term count
+            if (termCount) {
+                termCount.textContent = flashcardsData.cards.length;
+            }
+
+            function renderTerms() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                let filtered = flashcardsData.cards.filter(card => {
+                    const matchesCategory = activeCategory === 'all' || card.category === activeCategory;
+                    const matchesSearch = !searchTerm || 
+                        card.term.toLowerCase().includes(searchTerm) ||
+                        card.definition.toLowerCase().includes(searchTerm);
+                    return matchesCategory && matchesSearch;
+                });
+
+                // Sort alphabetically
+                filtered.sort((a, b) => a.term.localeCompare(b.term, 'da'));
+
+                if (filtered.length === 0) {
+                    termsGrid.innerHTML = '';
+                    noResults.hidden = false;
+                    return;
+                }
+
+                noResults.hidden = true;
+                termsGrid.innerHTML = filtered.map(card => `
+                    <div class="term-card ${expandedTerm === card.term ? 'expanded' : ''}" data-term="${card.term}">
+                        <div class="term-header">
+                            <h3>${card.term}</h3>
+                            <span class="term-category">${flashcardsData.categories[card.category]}</span>
+                        </div>
+                        <div class="term-content">
+                            <p class="term-definition">${card.definition}</p>
+                            ${card.example ? `<p class="term-example">${card.example}</p>` : ''}
+                        </div>
+                    </div>
+                `).join('');
+
+                // Add click handlers for expand/collapse
+                document.querySelectorAll('.term-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        const term = card.dataset.term;
+                        if (expandedTerm === term) {
+                            expandedTerm = null;
+                            card.classList.remove('expanded');
+                        } else {
+                            document.querySelectorAll('.term-card.expanded').forEach(c => c.classList.remove('expanded'));
+                            expandedTerm = term;
+                            card.classList.add('expanded');
+                        }
+                    });
+                });
+            }
+
+            searchInput.addEventListener('input', renderTerms);
+            
+            filterButtons.addEventListener('click', (e) => {
+                if (e.target.classList.contains('filter-btn')) {
+                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeCategory = e.target.dataset.category;
+                    renderTerms();
+                }
+            });
+
+            // Initial render
+            renderTerms();
+        })();
+    </script>
 </body>
 </html>
 

@@ -61,11 +61,14 @@
         }
         
         /* Boulders farver */
+        .grade-boulders-green { background: #22c55e; color: #fff; }
         .grade-yellow { background: #fbbf24; color: #1a1a1a; }
-        .grade-green { background: #22c55e; color: #fff; }
+        .grade-orange { background: #f97316; color: #fff; }
         .grade-blue { background: #3b82f6; color: #fff; }
         .grade-purple { background: #a855f7; color: #fff; }
+        .grade-red { background: #ef4444; color: #fff; }
         .grade-black { background: #1a1a1a; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .grade-pink { background: #ec4899; color: #fff; }
         
         /* Klatring Danmark farver */
         .grade-white { background: #f5f5f5; color: #1a1a1a; border: 1px solid rgba(0,0,0,0.15); }
@@ -327,37 +330,53 @@
                 </section>
 
                 <section class="content-block">
-                    <h2>🟡 Boulders farvesystem</h2>
-                    <p><strong>Boulders</strong> (Danmarks største kæde af bouldercentre) bruger et enkelt farvekodet system med 5 niveauer. Farverne overlapper bevidst for at motivere klatrere til at prøve sværere problemer.</p>
+                    <h2>🟢 Boulders farvesystem</h2>
+                    <p><strong>Boulders</strong> (Danmarks største kæde af bouldercentre) bruger et farvekodet system med 8 niveauer. Farverne overlapper bevidst for at motivere klatrere til at prøve sværere problemer.</p>
                     
                     <div class="color-scale">
                         <div class="color-row">
+                            <span class="grade-badge grade-boulders-green">Grøn</span>
+                            <span class="color-desc">Begynder – alle kan være med</span>
+                            <div class="grade-mapping">
+                                <span>VB-V0</span>
+                                <span>3-4</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
                             <span class="grade-badge grade-yellow">Gul</span>
-                            <span class="color-desc">Begynder – gode greb, simple bevægelser</span>
+                            <span class="color-desc">Let begynder – lidt sværere</span>
                             <div class="grade-mapping">
                                 <span>V0-V1</span>
                                 <span>4-5</span>
                             </div>
                         </div>
                         <div class="color-row">
-                            <span class="grade-badge grade-green">Grøn</span>
-                            <span class="color-desc">Let/Medium – kræver lidt teknik</span>
+                            <span class="grade-badge grade-orange">Orange</span>
+                            <span class="color-desc">Kræver en smule teknik</span>
                             <div class="grade-mapping">
-                                <span>V2-V3</span>
-                                <span>5+-6A+</span>
+                                <span>V1-V2</span>
+                                <span>5-5+</span>
                             </div>
                         </div>
                         <div class="color-row">
                             <span class="grade-badge grade-blue">Blå</span>
-                            <span class="color-desc">Medium/Svær – teknisk krævende</span>
+                            <span class="color-desc">Medium – teknisk krævende</span>
                             <div class="grade-mapping">
-                                <span>V4-V5</span>
-                                <span>6B-6C+</span>
+                                <span>V3-V4</span>
+                                <span>6A-6B+</span>
                             </div>
                         </div>
                         <div class="color-row">
                             <span class="grade-badge grade-purple">Lilla</span>
-                            <span class="color-desc">Svær – kræver styrke og god teknik</span>
+                            <span class="color-desc">Svær – kræver god teknik</span>
+                            <div class="grade-mapping">
+                                <span>V4-V5</span>
+                                <span>6B+-6C+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-red">Rød</span>
+                            <span class="color-desc">Meget svær – kræver styrke og teknik</span>
                             <div class="grade-mapping">
                                 <span>V6-V7</span>
                                 <span>7A-7B</span>
@@ -367,18 +386,26 @@
                             <span class="grade-badge grade-black">Sort</span>
                             <span class="color-desc">Ekspert – for erfarne klatrere</span>
                             <div class="grade-mapping">
-                                <span>V8+</span>
-                                <span>7B++</span>
+                                <span>V8-V9</span>
+                                <span>7B+-7C</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-pink">Pink</span>
+                            <span class="color-desc">Elite – de sværeste problemer</span>
+                            <div class="grade-mapping">
+                                <span>V10+</span>
+                                <span>7C++</span>
                             </div>
                         </div>
                     </div>
                     
-                    <p><em>Tip: Start altid med gul og grøn som opvarmning – også selvom du normalt klatrer sværere!</em></p>
+                    <p><em>Tip: Start altid med grøn og gul som opvarmning – også selvom du normalt klatrer sværere!</em></p>
                 </section>
 
                 <section class="content-block">
                     <h2>🏔️ Klatring Danmark farvesystem</h2>
-                    <p>Mange klatreklubber i Danmark bruger <strong>Klatring Danmarks standardfarveskala</strong> med 7 farver. Denne giver en finere opdeling end Boulders 5-farve-system.</p>
+                    <p>Mange klatreklubber i Danmark bruger <strong>Klatring Danmarks standardfarveskala</strong> med 7 farver. Denne er lidt anderledes end Boulders' system.</p>
                     
                     <div class="color-scale">
                         <div class="color-row">
@@ -451,7 +478,7 @@
                                 <tr>
                                     <td>VB</td>
                                     <td>3-4</td>
-                                    <td><span class="grade-badge grade-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
+                                    <td><span class="grade-badge grade-boulders-green" style="padding:3px 8px;font-size:0.75rem">Grøn</span></td>
                                     <td><span class="grade-badge grade-white" style="padding:3px 8px;font-size:0.75rem">Hvid</span></td>
                                 </tr>
                                 <tr>
@@ -469,37 +496,37 @@
                                 <tr>
                                     <td>V2</td>
                                     <td>5+</td>
-                                    <td><span class="grade-badge grade-green" style="padding:3px 8px;font-size:0.75rem">Grøn</span></td>
+                                    <td><span class="grade-badge grade-orange" style="padding:3px 8px;font-size:0.75rem">Orange</span></td>
                                     <td><span class="grade-badge grade-kd-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
                                 </tr>
                                 <tr>
                                     <td>V3</td>
                                     <td>6A-6A+</td>
-                                    <td><span class="grade-badge grade-green" style="padding:3px 8px;font-size:0.75rem">Grøn</span></td>
+                                    <td><span class="grade-badge grade-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
                                     <td><span class="grade-badge grade-orange" style="padding:3px 8px;font-size:0.75rem">Orange</span></td>
                                 </tr>
                                 <tr>
                                     <td>V4</td>
                                     <td>6B-6B+</td>
-                                    <td><span class="grade-badge grade-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
+                                    <td><span class="grade-badge grade-purple" style="padding:3px 8px;font-size:0.75rem">Lilla</span></td>
                                     <td><span class="grade-badge grade-red" style="padding:3px 8px;font-size:0.75rem">Rød</span></td>
                                 </tr>
                                 <tr>
                                     <td>V5</td>
                                     <td>6C-6C+</td>
-                                    <td><span class="grade-badge grade-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
+                                    <td><span class="grade-badge grade-purple" style="padding:3px 8px;font-size:0.75rem">Lilla</span></td>
                                     <td><span class="grade-badge grade-red" style="padding:3px 8px;font-size:0.75rem">Rød</span></td>
                                 </tr>
                                 <tr>
                                     <td>V6</td>
                                     <td>7A</td>
-                                    <td><span class="grade-badge grade-purple" style="padding:3px 8px;font-size:0.75rem">Lilla</span></td>
+                                    <td><span class="grade-badge grade-red" style="padding:3px 8px;font-size:0.75rem">Rød</span></td>
                                     <td><span class="grade-badge grade-kd-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
                                 </tr>
                                 <tr>
                                     <td>V7</td>
                                     <td>7A+-7B</td>
-                                    <td><span class="grade-badge grade-purple" style="padding:3px 8px;font-size:0.75rem">Lilla</span></td>
+                                    <td><span class="grade-badge grade-red" style="padding:3px 8px;font-size:0.75rem">Rød</span></td>
                                     <td><span class="grade-badge grade-kd-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
                                 </tr>
                                 <tr>
@@ -517,13 +544,13 @@
                                 <tr>
                                     <td>V10</td>
                                     <td>7C+-8A</td>
-                                    <td><span class="grade-badge grade-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                    <td><span class="grade-badge grade-pink" style="padding:3px 8px;font-size:0.75rem">Pink</span></td>
                                     <td><span class="grade-badge grade-pink" style="padding:3px 8px;font-size:0.75rem">Pink</span></td>
                                 </tr>
                                 <tr>
                                     <td>V11-V12</td>
                                     <td>8A-8A+</td>
-                                    <td><span class="grade-badge grade-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                    <td><span class="grade-badge grade-pink" style="padding:3px 8px;font-size:0.75rem">Pink</span></td>
                                     <td><span class="grade-badge grade-pink" style="padding:3px 8px;font-size:0.75rem">Pink</span></td>
                                 </tr>
                                 <tr>
@@ -565,10 +592,10 @@
 
                     <div class="scale-box">
                         <h4>📈 Typisk progression</h4>
-                        <p><strong>Første måned:</strong> De fleste begyndere klatrer V0-V2 (gul/grøn) efter få sessioner.<br>
-                        <strong>6 måneder:</strong> Med regelmæssig træning når mange V3-V4 (grøn/blå).<br>
-                        <strong>1-2 år:</strong> Dedikerede klatrere rammer ofte V5-V6 (blå/lilla).<br>
-                        <strong>3+ år:</strong> V7+ (lilla/sort) kræver typisk flere års træning.</p>
+                        <p><strong>Første måned:</strong> De fleste begyndere klatrer V0-V2 (grøn/gul/orange) efter få sessioner.<br>
+                        <strong>6 måneder:</strong> Med regelmæssig træning når mange V3-V4 (blå/lilla).<br>
+                        <strong>1-2 år:</strong> Dedikerede klatrere rammer ofte V5-V6 (lilla/rød).<br>
+                        <strong>3+ år:</strong> V7+ (rød/sort/pink) kræver typisk flere års træning.</p>
                     </div>
                 </section>
 

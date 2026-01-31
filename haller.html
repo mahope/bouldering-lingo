@@ -43,7 +43,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=20260131d">
+    <link rel="stylesheet" href="styles.css?v=20260131e">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -138,155 +138,9 @@
         </div>
     </footer>
 
-    <script>
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        });
-
-        // Mobile nav toggle
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !expanded);
-            navLinks.classList.toggle('open');
-        });
-
-        // Climbing halls data
-        const halls = [
-            // København
-            { name: "Boulders Sydhavn", city: "København", area: "Sydhavn", type: "boulder", url: "https://bfreak.dk/sydhavn", address: "Scandiagade 13, 2450 København SV" },
-            { name: "Boulders Valby", city: "København", area: "Valby", type: "boulder", url: "https://bfreak.dk/valby", address: "Gammel Køge Landevej 3, 2500 Valby" },
-            { name: "Blocs & Walls", city: "København", area: "Refshaleøen", type: "both", url: "https://blocsandwalls.com", address: "Refshalevej 163A, 1432 København K" },
-            { name: "Beta Boulders", city: "København", area: "Nordvest", type: "boulder", url: "https://betaboulders.dk", address: "Rentemestervej 64, 2400 København NV" },
-            { name: "Boulders Amager", city: "København", area: "Amager", type: "boulder", url: "https://bfreak.dk/amager", address: "Prags Boulevard 53, 2300 København S" },
-            { name: "Klatreklubben København (KKK)", city: "København", area: "Nørrebro", type: "both", url: "https://kfreak.dk", address: "Sigurdsgade 27, 2200 København N" },
-            { name: "Nørrebro Klatreklub", city: "København", area: "Nørrebro", type: "lead", url: "https://nklatre.dk", address: "Korsgade 29, 2200 København N" },
-            
-            // Aarhus
-            { name: "Boulders Aarhus", city: "Aarhus", area: "Midtbyen", type: "boulder", url: "https://bfreak.dk/aarhus", address: "Sletvej 30, 8310 Tranbjerg J" },
-            { name: "Klatreklubben Aarhus (AKKU)", city: "Aarhus", area: "Brabrand", type: "both", url: "https://kfreak.dk/aarhus", address: "Edwin Rahrs Vej 54, 8220 Brabrand" },
-            { name: "Gellerup Klatreklub", city: "Aarhus", area: "Gellerup", type: "lead", url: "https://gellerupklatreklub.dk", address: "Gudrunsvej 2, 8220 Brabrand" },
-            
-            // Odense
-            { name: "Boulders Odense", city: "Odense", area: "Midtbyen", type: "boulder", url: "https://bfreak.dk/odense", address: "Edisonsvej 5, 5000 Odense C" },
-            { name: "OKS Klatring", city: "Odense", area: "Bolbro", type: "both", url: "https://oks-klatring.dk", address: "Nyvangsvej 12, 5220 Odense SØ" },
-            
-            // Aalborg
-            { name: "Nordkraft Klatring", city: "Aalborg", area: "Midtbyen", type: "both", url: "https://nordkraft-klatring.dk", address: "Kjellerups Torv 5, 9000 Aalborg" },
-            { name: "Aalborg Klatreklub", city: "Aalborg", area: "Vejgaard", type: "lead", url: "https://aalborgklatreklub.dk", address: "Vestre Havnepromenade 15, 9000 Aalborg" },
-            
-            // Andre byer
-            { name: "Boulders Roskilde", city: "Roskilde", area: "Musicon", type: "boulder", url: "https://bfreak.dk/roskilde", address: "Rabalderstræde 14, 4000 Roskilde" },
-            { name: "Esbjerg Klatreklub", city: "Esbjerg", area: "Midtbyen", type: "both", url: "https://esbjergklatreklub.dk", address: "Gasværksgade 20, 6700 Esbjerg" },
-            { name: "Vejle Klatreklub", city: "Vejle", area: "Spinderihallerne", type: "both", url: "https://vejleklatreklub.dk", address: "Spinderigade 11, 7100 Vejle" },
-            { name: "Silkeborg Klatreklub", city: "Silkeborg", area: "Midtbyen", type: "lead", url: "https://silkeborgklatreklub.dk", address: "Århusvej 55, 8600 Silkeborg" },
-            { name: "Horsens Klatreklub", city: "Horsens", area: "Midtbyen", type: "both", url: "https://horsensklatreklub.dk", address: "Niels Gyldings Gade 3, 8700 Horsens" },
-            { name: "Fredericia Klatreklub", city: "Fredericia", area: "Midtbyen", type: "lead", url: "https://fredericiaklatreklub.dk", address: "Oldenborggade 29, 7000 Fredericia" },
-            { name: "Randers Klatreklub", city: "Randers", area: "Midtbyen", type: "lead", url: "https://randersklatring.dk", address: "Mariagervej 120, 8900 Randers" },
-            { name: "Kolding Klatreklub", city: "Kolding", area: "Bramdrupdam", type: "both", url: "https://koldingklatreklub.dk", address: "Bramdrupdam Industrivej 23, 6000 Kolding" },
-            { name: "Herning Klatreklub", city: "Herning", area: "Midtbyen", type: "lead", url: "https://herningklatreklub.dk", address: "Danmarksgade 34, 7400 Herning" },
-            { name: "Sønderborg Klatreklub", city: "Sønderborg", area: "Midtbyen", type: "lead", url: "https://soenderborgklatreklub.dk", address: "Nørre Havnegade 30, 6400 Sønderborg" },
-            { name: "Næstved Klatreklub", city: "Næstved", area: "Midtbyen", type: "both", url: "https://naestvedklatring.dk", address: "Farimagsvej 45, 4700 Næstved" },
-        ];
-
-        const searchInput = document.getElementById('searchInput');
-        const filterButtons = document.getElementById('filterButtons');
-        const hallsGrid = document.getElementById('hallsGrid');
-        const noResults = document.getElementById('noResults');
-        
-        let activeType = 'all';
-
-        function getTypeLabel(type) {
-            switch(type) {
-                case 'boulder': return '🪨 Boulder';
-                case 'lead': return '🧗 Lead/Toprope';
-                case 'both': return '🏔️ Begge';
-                default: return type;
-            }
-        }
-
-        function renderHalls() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            
-            let filtered = halls.filter(hall => {
-                const matchesType = activeType === 'all' || hall.type === activeType;
-                const matchesSearch = !searchTerm || 
-                    hall.name.toLowerCase().includes(searchTerm) ||
-                    hall.city.toLowerCase().includes(searchTerm) ||
-                    hall.area.toLowerCase().includes(searchTerm);
-                return matchesType && matchesSearch;
-            });
-
-            // Group by city
-            const byCity = filtered.reduce((acc, hall) => {
-                if (!acc[hall.city]) acc[hall.city] = [];
-                acc[hall.city].push(hall);
-                return acc;
-            }, {});
-
-            if (Object.keys(byCity).length === 0) {
-                hallsGrid.innerHTML = '';
-                noResults.hidden = false;
-                return;
-            }
-
-            noResults.hidden = true;
-            
-            // Sort cities: København first, then alphabetically
-            const sortedCities = Object.keys(byCity).sort((a, b) => {
-                if (a === 'København') return -1;
-                if (b === 'København') return 1;
-                if (a === 'Aarhus') return -1;
-                if (b === 'Aarhus') return 1;
-                return a.localeCompare(b, 'da');
-            });
-
-            hallsGrid.innerHTML = sortedCities.map(city => `
-                <div class="city-section">
-                    <h2 class="city-heading">${city}</h2>
-                    <div class="halls-list">
-                        ${byCity[city].map(hall => `
-                            <div class="hall-card">
-                                <div class="hall-header">
-                                    <h3>${hall.name}</h3>
-                                    <span class="hall-type type-${hall.type}">${getTypeLabel(hall.type)}</span>
-                                </div>
-                                <p class="hall-area">📍 ${hall.area}</p>
-                                <p class="hall-address">${hall.address}</p>
-                                <a href="${hall.url}" target="_blank" rel="noopener noreferrer" class="hall-link">
-                                    Besøg hjemmeside →
-                                </a>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Event listeners
-        searchInput.addEventListener('input', renderHalls);
-        
-        filterButtons.addEventListener('click', (e) => {
-            if (e.target.classList.contains('filter-btn')) {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                e.target.classList.add('active');
-                activeType = e.target.dataset.type;
-                renderHalls();
-            }
-        });
-
-        // Initial render
-        renderHalls();
-    </script>
+    <script src="page-scripts.js"></script>
 </body>
 </html>
+
+
 

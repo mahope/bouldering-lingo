@@ -43,7 +43,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=20260131d">
+    <link rel="stylesheet" href="styles.css?v=20260131e">
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -279,28 +279,9 @@
         </div>
     </footer>
 
-    <script>
-        // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const current = document.documentElement.getAttribute('data-theme');
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-        });
-
-        // Mobile nav toggle
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => {
-            const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !expanded);
-            navLinks.classList.toggle('open');
-        });
-    </script>
+    <script src="page-scripts.js"></script>
 </body>
 </html>
+
+
 

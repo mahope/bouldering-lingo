@@ -1286,6 +1286,21 @@ kbd {
     text-decoration: underline;
 }
 
+/* Fix: Buttons should not inherit content-block link styling */
+.content-block a.btn,
+.content-block a.btn-knew,
+.cta-buttons a.btn,
+.cta-block a.btn {
+    text-decoration: none;
+}
+
+.content-block a.btn-knew,
+.cta-buttons a.btn-knew,
+.cta-block a.btn-knew {
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--accent-dark), #0d7a32);
+}
+
 /* Feature List */
 .feature-list {
     list-style: none;

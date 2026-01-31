@@ -1,3 +1,4 @@
+// Bouldering Lingo Data - 110 terms
 const flashcardsData = {
     categories: {
         "grip": "Greb",

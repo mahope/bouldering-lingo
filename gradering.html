@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="da" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Bouldering graderingssystemer – V-skala, Font-skala & farvesystemer 🧗</title>
+    <meta name="description" content="Komplet guide til bouldering graderingssystemer. Lær V-skala, Font-skala, Boulders farvesystem og Klatring Danmark farveskala. Konverteringstabel og tips.">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://boulder.holstjensen.nu/gradering.html">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://boulder.holstjensen.nu/gradering.html">
+    <meta property="og:title" content="Bouldering graderingssystemer – Guide til V-skala, Font-skala & farvesystemer">
+    <meta property="og:description" content="Lær alle bouldering graderingssystemer: V-skala, Font-skala, Boulders farvesystem og Klatring Danmark standard.">
+    <meta property="og:locale" content="da_DK">
+    <meta property="og:site_name" content="Bouldering Lingo">
+    <meta property="og:image" content="https://boulder.holstjensen.nu/images/og-image.png">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bouldering graderingssystemer 🧗">
+    <meta name="twitter:description" content="V-skala, Font-skala, Boulders farver og Klatring Danmark - komplet guide.">
+    
+    <!-- Additional SEO -->
+    <meta name="keywords" content="bouldering gradering, V-skala, font-skala, fontainebleau, hueco, boulders farver, klatring danmark, klatregradering, boulder sværhedsgrad, V0 V1 V2, 6A 6B 7A">
+    <meta name="author" content="Mads Holst Jensen">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    <!-- Theme & Mobile -->
+    <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css?v=20260131e">
+    
+    <!-- Page-specific styles -->
+    <style>
+        /* Grade color badges */
+        .grade-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        /* Boulders farver */
+        .grade-yellow { background: #fbbf24; color: #1a1a1a; }
+        .grade-green { background: #22c55e; color: #fff; }
+        .grade-blue { background: #3b82f6; color: #fff; }
+        .grade-purple { background: #a855f7; color: #fff; }
+        .grade-black { background: #1a1a1a; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        
+        /* Klatring Danmark farver */
+        .grade-white { background: #f5f5f5; color: #1a1a1a; border: 1px solid rgba(0,0,0,0.15); }
+        .grade-kd-yellow { background: #facc15; color: #1a1a1a; }
+        .grade-orange { background: #f97316; color: #fff; }
+        .grade-red { background: #ef4444; color: #fff; }
+        .grade-kd-blue { background: #2563eb; color: #fff; }
+        .grade-kd-black { background: #171717; color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+        .grade-pink { background: #ec4899; color: #fff; }
+        
+        /* Color scale section */
+        .color-scale {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .color-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 120px;
+            gap: 12px;
+            align-items: center;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+        
+        @media (max-width: 500px) {
+            .color-row {
+                grid-template-columns: 80px 1fr;
+                gap: 8px;
+            }
+            .color-row .grade-mapping {
+                grid-column: 1 / -1;
+                justify-self: start;
+            }
+        }
+        
+        .color-name {
+            font-weight: 600;
+        }
+        
+        .color-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .grade-mapping {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .grade-mapping span {
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            font-weight: 500;
+        }
+        
+        /* Conversion table */
+        .conversion-table {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+        }
+        
+        .conversion-table table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+        
+        .conversion-table th,
+        .conversion-table td {
+            padding: 12px 16px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .conversion-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+        }
+        
+        .conversion-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .conversion-table tr:nth-child(even) {
+            background: var(--bg-card);
+        }
+        
+        .conversion-table tr:hover {
+            background: var(--bg-card-hover);
+        }
+        
+        /* Difficulty indicator bar */
+        .difficulty-bar {
+            display: flex;
+            gap: 2px;
+            margin: 24px 0;
+        }
+        
+        .difficulty-bar .segment {
+            flex: 1;
+            height: 8px;
+            border-radius: 4px;
+        }
+        
+        .difficulty-bar .segment:nth-child(1) { background: #22c55e; }
+        .difficulty-bar .segment:nth-child(2) { background: #84cc16; }
+        .difficulty-bar .segment:nth-child(3) { background: #eab308; }
+        .difficulty-bar .segment:nth-child(4) { background: #f97316; }
+        .difficulty-bar .segment:nth-child(5) { background: #ef4444; }
+        .difficulty-bar .segment:nth-child(6) { background: #dc2626; }
+        .difficulty-bar .segment:nth-child(7) { background: #991b1b; }
+        
+        .difficulty-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+        
+        /* Scale info boxes */
+        .scale-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin: 16px 0;
+        }
+        
+        .scale-box h4 {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .scale-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* Tips callout */
+        .tip-callout {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05));
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: var(--radius-md);
+            padding: 16px 20px;
+            margin: 20px 0;
+        }
+        
+        .tip-callout h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        
+        .tip-callout ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .tip-callout li {
+            color: var(--text-secondary);
+            margin: 6px 0;
+        }
+    </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Bouldering graderingssystemer – V-skala, Font-skala & farvesystemer",
+        "description": "Komplet guide til bouldering graderingssystemer. Lær V-skala, Font-skala, Boulders farvesystem og Klatring Danmark farveskala.",
+        "url": "https://boulder.holstjensen.nu/gradering.html",
+        "author": {
+            "@type": "Person",
+            "name": "Mads Holst Jensen"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Bouldering Lingo",
+            "url": "https://boulder.holstjensen.nu"
+        },
+        "mainEntityOfPage": "https://boulder.holstjensen.nu/gradering.html"
+    }
+    </script>
+</head>
+<body>
+    <div class="app page-content">
+        <header role="banner">
+            <nav class="main-nav" role="navigation" aria-label="Hovednavigation">
+                <a href="/" class="nav-logo">🧗 Bouldering Lingo</a>
+                <button class="nav-toggle" id="navToggle" aria-label="Åbn menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="/">Flashcards</a></li>
+                    <li><a href="/termer.html">Alle termer</a></li>
+                    <li><a href="/kategorier.html">Kategorier</a></li>
+                    <li><a href="/haller.html">Klatrehaller</a></li>
+                    <li><a href="/gradering.html" class="active">Gradering</a></li>
+                    <li><a href="/om.html">Om</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle" aria-label="Skift tema">
+                    <span class="theme-icon sun">☀️</span>
+                    <span class="theme-icon moon">🌙</span>
+                </button>
+            </nav>
+        </header>
+
+        <main class="content-section article-content">
+            <article>
+                <h1>🎯 Graderingssystemer i bouldering</h1>
+                
+                <p class="intro-text">Hvordan ved man, hvor svær en boulder er? Der findes flere graderingssystemer – her får du det fulde overblik over V-skala, Font-skala og de danske farvesystemer.</p>
+
+                <div class="difficulty-bar">
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                    <div class="segment"></div>
+                </div>
+                <div class="difficulty-labels">
+                    <span>Begynder</span>
+                    <span>Øvet</span>
+                    <span>Ekspert</span>
+                </div>
+
+                <section class="content-block">
+                    <h2>📊 De to internationale skalaer</h2>
+                    <p>Verden over bruges primært to graderingssystemer til bouldering. Begge er subjektive vurderinger af sværhedsgrad, og der findes ingen eksakt konvertering.</p>
+
+                    <div class="scale-box">
+                        <h4>🇺🇸 V-skala (Hueco-skala)</h4>
+                        <p>Opfundet af John "Vermin" Sherman i Hueco Tanks, Texas i 1990'erne. Går fra <strong>VB</strong> (begynder) op til <strong>V17</strong> (verdens sværeste). Brugt primært i USA, men kendes globalt. Simple tal gør det nemt at sammenligne.</p>
+                    </div>
+
+                    <div class="scale-box">
+                        <h4>🇫🇷 Font-skala (Fontainebleau)</h4>
+                        <p>Fra boulderområdet Fontainebleau syd for Paris – "boulderingens vugge". Går fra <strong>1</strong> til <strong>9A</strong>. Bruger bogstaver (A, B, C) og plus (+) som finere inddeling. Standard i Europa og Danmark.</p>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <h2>🟡 Boulders farvesystem</h2>
+                    <p><strong>Boulders</strong> (Danmarks største kæde af bouldercentre) bruger et enkelt farvekodet system med 5 niveauer. Farverne overlapper bevidst for at motivere klatrere til at prøve sværere problemer.</p>
+                    
+                    <div class="color-scale">
+                        <div class="color-row">
+                            <span class="grade-badge grade-yellow">Gul</span>
+                            <span class="color-desc">Begynder – gode greb, simple bevægelser</span>
+                            <div class="grade-mapping">
+                                <span>V0-V1</span>
+                                <span>4-5</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-green">Grøn</span>
+                            <span class="color-desc">Let/Medium – kræver lidt teknik</span>
+                            <div class="grade-mapping">
+                                <span>V2-V3</span>
+                                <span>5+-6A+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-blue">Blå</span>
+                            <span class="color-desc">Medium/Svær – teknisk krævende</span>
+                            <div class="grade-mapping">
+                                <span>V4-V5</span>
+                                <span>6B-6C+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-purple">Lilla</span>
+                            <span class="color-desc">Svær – kræver styrke og god teknik</span>
+                            <div class="grade-mapping">
+                                <span>V6-V7</span>
+                                <span>7A-7B</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-black">Sort</span>
+                            <span class="color-desc">Ekspert – for erfarne klatrere</span>
+                            <div class="grade-mapping">
+                                <span>V8+</span>
+                                <span>7B++</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p><em>Tip: Start altid med gul og grøn som opvarmning – også selvom du normalt klatrer sværere!</em></p>
+                </section>
+
+                <section class="content-block">
+                    <h2>🏔️ Klatring Danmark farvesystem</h2>
+                    <p>Mange klatreklubber i Danmark bruger <strong>Klatring Danmarks standardfarveskala</strong> med 7 farver. Denne giver en finere opdeling end Boulders 5-farve-system.</p>
+                    
+                    <div class="color-scale">
+                        <div class="color-row">
+                            <span class="grade-badge grade-white">Hvid</span>
+                            <span class="color-desc">Helt begynder</span>
+                            <div class="grade-mapping">
+                                <span>4-4+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-kd-yellow">Gul</span>
+                            <span class="color-desc">Begynder</span>
+                            <div class="grade-mapping">
+                                <span>5-5+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-orange">Orange</span>
+                            <span class="color-desc">Let øvet</span>
+                            <div class="grade-mapping">
+                                <span>6A-6A+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-red">Rød</span>
+                            <span class="color-desc">Mellemøvet</span>
+                            <div class="grade-mapping">
+                                <span>6A-6C+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-kd-blue">Blå</span>
+                            <span class="color-desc">Øvet</span>
+                            <div class="grade-mapping">
+                                <span>6C-7A+</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-kd-black">Sort</span>
+                            <span class="color-desc">Avanceret</span>
+                            <div class="grade-mapping">
+                                <span>7A-7C</span>
+                            </div>
+                        </div>
+                        <div class="color-row">
+                            <span class="grade-badge grade-pink">Pink</span>
+                            <span class="color-desc">Elite</span>
+                            <div class="grade-mapping">
+                                <span>7C+</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <h2>🔄 Konverteringstabel</h2>
+                    <p>Brug denne tabel til at oversætte mellem systemer. Husk: Konverteringer er <em>omtrentlige</em> – samme grad kan føles forskelligt afhængigt af din klatrestil.</p>
+                    
+                    <div class="conversion-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>V-skala</th>
+                                    <th>Font-skala</th>
+                                    <th>Boulders</th>
+                                    <th>KD Standard</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>VB</td>
+                                    <td>3-4</td>
+                                    <td><span class="grade-badge grade-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
+                                    <td><span class="grade-badge grade-white" style="padding:3px 8px;font-size:0.75rem">Hvid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V0</td>
+                                    <td>4-4+</td>
+                                    <td><span class="grade-badge grade-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
+                                    <td><span class="grade-badge grade-white" style="padding:3px 8px;font-size:0.75rem">Hvid</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V1</td>
+                                    <td>5</td>
+                                    <td><span class="grade-badge grade-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
+                                    <td><span class="grade-badge grade-kd-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V2</td>
+                                    <td>5+</td>
+                                    <td><span class="grade-badge grade-green" style="padding:3px 8px;font-size:0.75rem">Grøn</span></td>
+                                    <td><span class="grade-badge grade-kd-yellow" style="padding:3px 8px;font-size:0.75rem">Gul</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V3</td>
+                                    <td>6A-6A+</td>
+                                    <td><span class="grade-badge grade-green" style="padding:3px 8px;font-size:0.75rem">Grøn</span></td>
+                                    <td><span class="grade-badge grade-orange" style="padding:3px 8px;font-size:0.75rem">Orange</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V4</td>
+                                    <td>6B-6B+</td>
+                                    <td><span class="grade-badge grade-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
+                                    <td><span class="grade-badge grade-red" style="padding:3px 8px;font-size:0.75rem">Rød</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V5</td>
+                                    <td>6C-6C+</td>
+                                    <td><span class="grade-badge grade-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
+                                    <td><span class="grade-badge grade-red" style="padding:3px 8px;font-size:0.75rem">Rød</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V6</td>
+                                    <td>7A</td>
+                                    <td><span class="grade-badge grade-purple" style="padding:3px 8px;font-size:0.75rem">Lilla</span></td>
+                                    <td><span class="grade-badge grade-kd-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V7</td>
+                                    <td>7A+-7B</td>
+                                    <td><span class="grade-badge grade-purple" style="padding:3px 8px;font-size:0.75rem">Lilla</span></td>
+                                    <td><span class="grade-badge grade-kd-blue" style="padding:3px 8px;font-size:0.75rem">Blå</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V8</td>
+                                    <td>7B-7B+</td>
+                                    <td><span class="grade-badge grade-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                    <td><span class="grade-badge grade-kd-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V9</td>
+                                    <td>7B+-7C</td>
+                                    <td><span class="grade-badge grade-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                    <td><span class="grade-badge grade-kd-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V10</td>
+                                    <td>7C+-8A</td>
+                                    <td><span class="grade-badge grade-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                    <td><span class="grade-badge grade-pink" style="padding:3px 8px;font-size:0.75rem">Pink</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V11-V12</td>
+                                    <td>8A-8A+</td>
+                                    <td><span class="grade-badge grade-black" style="padding:3px 8px;font-size:0.75rem">Sort</span></td>
+                                    <td><span class="grade-badge grade-pink" style="padding:3px 8px;font-size:0.75rem">Pink</span></td>
+                                </tr>
+                                <tr>
+                                    <td>V13-V14</td>
+                                    <td>8B-8B+</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>V15-V16</td>
+                                    <td>8C-8C+</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                </tr>
+                                <tr>
+                                    <td>V17</td>
+                                    <td>9A</td>
+                                    <td>—</td>
+                                    <td>—</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <h2>💡 Tips om graderinger</h2>
+                    
+                    <div class="tip-callout">
+                        <h4>🤔 Husk: Grader er subjektive!</h4>
+                        <ul>
+                            <li><strong>Forskellige klatrestile:</strong> En boulder med lange bevægelser er sværere for korte klatrere</li>
+                            <li><strong>Styrke vs. teknik:</strong> Kraftkrævende problemer favoriserer stærke klatrere</li>
+                            <li><strong>Forskellige haller:</strong> Graderinger varierer mellem haller – "soft" vs. "stiff" grading</li>
+                            <li><strong>Outdoor vs. indoor:</strong> Udendørs grader anses typisk for strengere</li>
+                            <li><strong>Personlig stil:</strong> Du vil have boulders du er god til og dårlig til inden for samme grad</li>
+                        </ul>
+                    </div>
+
+                    <div class="scale-box">
+                        <h4>📈 Typisk progression</h4>
+                        <p><strong>Første måned:</strong> De fleste begyndere klatrer V0-V2 (gul/grøn) efter få sessioner.<br>
+                        <strong>6 måneder:</strong> Med regelmæssig træning når mange V3-V4 (grøn/blå).<br>
+                        <strong>1-2 år:</strong> Dedikerede klatrere rammer ofte V5-V6 (blå/lilla).<br>
+                        <strong>3+ år:</strong> V7+ (lilla/sort) kræver typisk flere års træning.</p>
+                    </div>
+                </section>
+
+                <section class="content-block">
+                    <h2>🗣️ Graderingstermer</h2>
+                    <p>Lær de vigtigste termer relateret til gradering:</p>
+                    
+                    <ul class="feature-list">
+                        <li><strong>Flash:</strong> Gennemføre en boulder på første forsøg (med beta)</li>
+                        <li><strong>Onsight:</strong> Flash uden nogen forhåndsviden</li>
+                        <li><strong>Send:</strong> Gennemføre en boulder (uanset antal forsøg)</li>
+                        <li><strong>Projekt:</strong> En boulder du arbejder på over flere sessioner</li>
+                        <li><strong>Soft grade:</strong> Når en boulder føles lettere end graden antyder</li>
+                        <li><strong>Stiff grade:</strong> Når en boulder føles sværere end graden</li>
+                        <li><strong>Sandbag:</strong> En boulder der er graderet for let (bevidst eller ubevidst)</li>
+                    </ul>
+                    
+                    <div class="cta-buttons">
+                        <a href="/termer.html" class="btn btn-knew">Se alle termer →</a>
+                    </div>
+                </section>
+
+                <section class="content-block cta-block">
+                    <h2>🚀 Klar til at klatre?</h2>
+                    <p>Find en klatrehal og prøv forskellige grader selv!</p>
+                    <a href="/haller.html" class="btn btn-knew">Find klatrehaller →</a>
+                </section>
+            </article>
+        </main>
+    </div>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/">Flashcards</a>
+                <a href="/termer.html">Alle termer</a>
+                <a href="/kategorier.html">Kategorier</a>
+                <a href="/haller.html">Klatrehaller</a>
+                <a href="/gradering.html">Gradering</a>
+                <a href="/hvad-er-bouldering.html">Hvad er bouldering?</a>
+            </div>
+            <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer">Mahope</a></p>
+        </div>
+    </footer>
+
+    <script src="page-scripts.js"></script>
+</body>
+</html>

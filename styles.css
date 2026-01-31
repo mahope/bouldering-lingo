@@ -1297,7 +1297,8 @@ kbd {
 .content-block a.btn-knew,
 .cta-buttons a.btn-knew,
 .cta-block a.btn-knew {
-    color: #ffffff;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
     background: linear-gradient(135deg, var(--accent-dark), #0d7a32);
 }
 

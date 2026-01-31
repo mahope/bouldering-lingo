@@ -1,0 +1,8 @@
+# Robots.txt for boulder.holstjensen.nu
+# Bouldering Lingo - Lær klatretermer med flashcards
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://boulder.holstjensen.nu/sitemap.xml

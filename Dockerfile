@@ -1,5 +1,6 @@
-﻿FROM nginx:alpine
+FROM nginx:alpine
 COPY . /usr/share/nginx/html/
-RUN rm -rf /usr/share/nginx/html/Dockerfile /usr/share/nginx/html/.git
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN rm -rf /usr/share/nginx/html/Dockerfile /usr/share/nginx/html/.git /usr/share/nginx/html/nginx.conf
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

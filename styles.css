@@ -112,6 +112,8 @@ header {
     align-items: center;
     gap: 16px;
     position: relative;
+    padding-right: 52px; /* Space for theme toggle */
+    padding-left: 52px; /* Balance */
 }
 
 header h1 {

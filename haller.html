@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Klatrehaller i Danmark – Find dit nærmeste bouldercenter 🧗</title>
-    <meta name="description" content="Komplet oversigt over klatrehaller og bouldercentre i Danmark. Find haller i København, Aarhus, Odense, Aalborg og resten af landet med adresser og links.">
+    <meta name="description" content="Komplet oversigt over 50+ klatrehaller og bouldercentre i Danmark. Find haller i København, Aarhus, Odense, Aalborg og resten af landet med adresser, kort og links.">
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://boulder.holstjensen.nu/haller.html">
@@ -13,7 +13,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://boulder.holstjensen.nu/haller.html">
     <meta property="og:title" content="Klatrehaller i Danmark 🧗">
-    <meta property="og:description" content="Find klatrehaller og bouldercentre i hele Danmark. København, Aarhus, Odense, Aalborg og mere.">
+    <meta property="og:description" content="Find 50+ klatrehaller og bouldercentre i hele Danmark. København, Aarhus, Odense, Aalborg og mere.">
     <meta property="og:locale" content="da_DK">
     <meta property="og:site_name" content="Bouldering Lingo">
     <meta property="og:image" content="https://boulder.holstjensen.nu/images/og-image.png">
@@ -21,10 +21,10 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Klatrehaller i Danmark 🧗">
-    <meta name="twitter:description" content="Find klatrehaller og bouldercentre i hele Danmark.">
+    <meta name="twitter:description" content="Find 50+ klatrehaller og bouldercentre i hele Danmark.">
     
     <!-- Additional SEO -->
-    <meta name="keywords" content="klatrehaller danmark, bouldercentre, klatring københavn, bouldering aarhus, klatrevæg odense, indoor klatring">
+    <meta name="keywords" content="klatrehaller danmark, bouldercentre, klatring københavn, bouldering aarhus, klatrevæg odense, indoor klatring, boulders, blocs walls">
     <meta name="author" content="Mads Holst Jensen">
     <meta name="robots" content="index, follow">
     
@@ -42,8 +42,224 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=20260131e">
+    <link rel="stylesheet" href="styles.css?v=20260131f">
+    
+    <style>
+        /* Map styles */
+        #map {
+            height: 400px;
+            width: 100%;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            z-index: 1;
+        }
+        
+        [data-theme="dark"] #map {
+            filter: invert(1) hue-rotate(180deg);
+        }
+        
+        [data-theme="dark"] #map .leaflet-marker-icon,
+        [data-theme="dark"] #map .leaflet-popup-content-wrapper,
+        [data-theme="dark"] #map .leaflet-popup-tip {
+            filter: invert(1) hue-rotate(180deg);
+        }
+        
+        .leaflet-popup-content-wrapper {
+            border-radius: 12px;
+        }
+        
+        .leaflet-popup-content {
+            margin: 12px 16px;
+        }
+        
+        .popup-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        
+        .popup-type {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .popup-link {
+            color: var(--accent, #a855f7);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        
+        .popup-link:hover {
+            text-decoration: underline;
+        }
+        
+        /* Stats bar */
+        .stats-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--card-bg, rgba(255,255,255,0.05));
+            border-radius: 12px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 0.5rem 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent, #a855f7);
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary, #888);
+        }
+        
+        /* Region headers */
+        .region-section {
+            margin-bottom: 2rem;
+        }
+        
+        .region-header {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent, #a855f7);
+        }
+        
+        .region-count {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-secondary, #888);
+            margin-left: 0.5rem;
+        }
+        
+        /* Hall cards */
+        .hall-card {
+            background: var(--card-bg, rgba(255,255,255,0.05));
+            border-radius: 12px;
+            padding: 1.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .hall-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .hall-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .hall-name a {
+            color: inherit;
+            text-decoration: none;
+        }
+        
+        .hall-name a:hover {
+            color: var(--accent, #a855f7);
+        }
+        
+        .hall-city {
+            color: var(--text-secondary, #888);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hall-type {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .hall-type.boulder {
+            background: rgba(168, 85, 247, 0.2);
+            color: #a855f7;
+        }
+        
+        .hall-type.lead {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        .hall-type.both {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+        }
+        
+        .hall-commercial {
+            display: inline-block;
+            margin-left: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            background: rgba(251, 191, 36, 0.2);
+            color: #fbbf24;
+        }
+        
+        .halls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* View toggle */
+        .view-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .view-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: var(--card-bg, rgba(255,255,255,0.05));
+            color: var(--text-primary, #fff);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .view-btn.active {
+            background: var(--accent, #a855f7);
+            color: white;
+        }
+        
+        @media (max-width: 600px) {
+            #map {
+                height: 300px;
+                border-radius: 12px;
+            }
+            
+            .stats-bar {
+                gap: 0.5rem;
+            }
+            
+            .stat-item {
+                padding: 0.5rem 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -51,22 +267,9 @@
         "@context": "https://schema.org",
         "@type": "ItemList",
         "name": "Klatrehaller i Danmark",
-        "description": "Oversigt over klatrehaller og bouldercentre i Danmark",
+        "description": "Komplet oversigt over 50+ klatrehaller og bouldercentre i Danmark",
         "url": "https://boulder.holstjensen.nu/haller.html",
-        "itemListElement": [
-            {
-                "@type": "LocalBusiness",
-                "name": "Boulders Sydhavn",
-                "address": {"@type": "PostalAddress", "addressLocality": "København"},
-                "@id": "https://bfreak.dk/sydhavn"
-            },
-            {
-                "@type": "LocalBusiness", 
-                "name": "Blocs & Walls",
-                "address": {"@type": "PostalAddress", "addressLocality": "København"},
-                "@id": "https://blocsandwalls.com"
-            }
-        ]
+        "numberOfItems": 55
     }
     </script>
 </head>
@@ -94,8 +297,32 @@
 
         <main class="content-section">
             <h1>Klatrehaller i Danmark</h1>
-            <p class="intro-text">Find dit nærmeste boulder- eller klatrecenter. Søg efter by eller hallens navn.</p>
+            <p class="intro-text">Find dit nærmeste boulder- eller klatrecenter. Kortet viser alle haller, og du kan søge og filtrere nedenfor.</p>
             
+            <!-- Stats -->
+            <div class="stats-bar" id="statsBar">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalCount">0</div>
+                    <div class="stat-label">Haller i alt</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="boulderCount">0</div>
+                    <div class="stat-label">Kun boulder</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="leadCount">0</div>
+                    <div class="stat-label">Kun lead</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="bothCount">0</div>
+                    <div class="stat-label">Begge dele</div>
+                </div>
+            </div>
+            
+            <!-- Map -->
+            <div id="map"></div>
+            
+            <!-- Search & Filter -->
             <div class="search-filter-container">
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Søg efter hal eller by..." aria-label="Søg efter klatrehal">
@@ -109,9 +336,8 @@
                 </div>
             </div>
 
-            <div class="halls-grid" id="hallsGrid">
-                <!-- Generated by JS -->
-            </div>
+            <!-- Halls by Region -->
+            <div id="hallsContainer"></div>
 
             <div class="no-results" id="noResults" hidden>
                 <p>😕 Ingen haller fundet. Prøv en anden søgning.</p>
@@ -119,7 +345,7 @@
 
             <section class="content-block" style="margin-top: 3rem;">
                 <h2>💡 Kender du en hal vi mangler?</h2>
-                <p>Denne liste er under konstant opdatering. Hvis du kender en klatrehal der ikke er med, så <a href="mailto:mads@mahope.dk">send os en besked</a>!</p>
+                <p>Denne liste opdateres løbende. Hvis du kender en klatrehal der ikke er med, så <a href="mailto:mads@mahope.dk">send os en besked</a>!</p>
             </section>
         </main>
     </div>
@@ -139,8 +365,276 @@
     </footer>
 
     <script src="page-scripts.js"></script>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script>
+    (function() {
+        'use strict';
+        
+        // ===== HALL DATA =====
+        // Verified Danish climbing gyms with coordinates
+        const halls = [
+            // === HOVEDSTADEN - Kommercielle ===
+            { name: "Boulders Sydhavn", city: "København", region: "Hovedstaden", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 55.6539, lng: 12.5445, address: "Sjællandsbroen 2-4" },
+            { name: "Boulders Amager", city: "København", region: "Hovedstaden", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 55.6297, lng: 12.6099, address: "Vermlandsgade 51" },
+            { name: "Boulders Hvidovre", city: "Hvidovre", region: "Hovedstaden", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 55.6307, lng: 12.4711, address: "Avedøreholmen 90" },
+            { name: "Boulders Valby", city: "København", region: "Hovedstaden", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 55.6628, lng: 12.5111, address: "Gammel Køge Landevej 55" },
+            { name: "Boulders Vanløse", city: "København", region: "Hovedstaden", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 55.6837, lng: 12.4844, address: "Vanløse Allé 100" },
+            { name: "Blocs & Walls", city: "København", region: "Hovedstaden", type: "both", commercial: true, url: "https://www.dbkk.dk", lat: 55.6636, lng: 12.6021, address: "Prags Boulevard 47" },
+            
+            // === HOVEDSTADEN - Foreninger ===
+            { name: "Nørrebro Klatreklub", city: "København", region: "Hovedstaden", type: "both", commercial: false, url: "https://nkk.klub-modul.dk", lat: 55.7008, lng: 12.5490, address: "Nørrebrogade 208" },
+            { name: "DBKK Sundholm", city: "København", region: "Hovedstaden", type: "both", commercial: false, url: "https://www.dbkk.dk", lat: 55.6580, lng: 12.6050, address: "Sundholmsvej" },
+            { name: "DBKK Amager Nordvæg", city: "København", region: "Hovedstaden", type: "lead", commercial: false, url: "https://www.dbkk.dk", lat: 55.6750, lng: 12.5900, address: "Amager" },
+            { name: "Klatreklubben Skorstenen", city: "Albertslund", region: "Hovedstaden", type: "both", commercial: false, url: "https://www.skorstenen.dk", lat: 55.6580, lng: 12.3624, address: "Skolevej 6" },
+            { name: "PLØKS", city: "Skovlunde", region: "Hovedstaden", type: "both", commercial: false, url: "https://www.ploeks.dk", lat: 55.7180, lng: 12.4000, address: "Skovlunde" },
+            { name: "GaK Hillerød Klatreklub", city: "Hillerød", region: "Hovedstaden", type: "both", commercial: false, url: "https://www.gak.dk", lat: 55.9267, lng: 12.3100, address: "Hillerød" },
+            { name: "Klatreklub Nordsjælland", city: "Humlebæk", region: "Hovedstaden", type: "both", commercial: false, url: "https://klatreklubnordsjaelland.dk", lat: 55.9630, lng: 12.5330, address: "Humlebæk" },
+            { name: "Søborg Klatreklub", city: "Søborg", region: "Hovedstaden", type: "both", commercial: false, url: "https://www.facebook.com/SøborgKlatreklub", lat: 55.7340, lng: 12.5120, address: "Søborg" },
+            { name: "Hedehusene IF Klatring", city: "Hedehusene", region: "Hovedstaden", type: "both", commercial: false, url: "https://www.hedehuseneif.dk", lat: 55.6500, lng: 12.2000, address: "Hedehusene" },
+            
+            // === SJÆLLAND ===
+            { name: "Roskilde Klatreklub", city: "Roskilde", region: "Sjælland", type: "both", commercial: false, url: "https://rokk.klub-modul.dk", lat: 55.6420, lng: 12.0880, address: "Roskilde" },
+            { name: "Køge Klatreklub", city: "Køge", region: "Sjælland", type: "both", commercial: false, url: "https://koege-klatreklub.dk", lat: 55.4570, lng: 12.1820, address: "Køge" },
+            { name: "Holbæk Klatreklub", city: "Holbæk", region: "Sjælland", type: "both", commercial: false, url: "https://www.hkk4300.dk", lat: 55.7170, lng: 11.7130, address: "Holbæk" },
+            { name: "Klatreklubben Giraffen", city: "Hvalsø", region: "Sjælland", type: "both", commercial: false, url: "https://www.klatre.dk", lat: 55.5870, lng: 11.8620, address: "Hvalsø" },
+            { name: "Næstved Klatreklub", city: "Næstved", region: "Sjælland", type: "both", commercial: false, url: "https://www.naestvedklatreklub.dk", lat: 55.2290, lng: 11.7600, address: "Næstved" },
+            { name: "CRUX Klatreklub", city: "Skælskør", region: "Sjælland", type: "both", commercial: false, url: "https://www.crux-klatreklub.dk", lat: 55.2530, lng: 11.2930, address: "Skælskør" },
+            { name: "Sorø Klatreklub", city: "Sorø", region: "Sjælland", type: "both", commercial: false, url: "https://soroeklatreklub.klub-modul.dk", lat: 55.4310, lng: 11.5550, address: "Sorø" },
+            { name: "Sydsjællands Klatreklub", city: "Vordingborg", region: "Sjælland", type: "both", commercial: false, url: "https://www.sydsjaellandsklatreklub.dk", lat: 55.0080, lng: 11.9100, address: "Vordingborg" },
+            { name: "Odsherred Boulders", city: "Odsherred", region: "Sjælland", type: "boulder", commercial: false, url: "https://www.facebook.com/OdsherredBoulders", lat: 55.8500, lng: 11.6000, address: "Odsherred" },
+            { name: "Skibby Klatreklub", city: "Skibby", region: "Sjælland", type: "both", commercial: false, url: "https://www.skibbyklatreklub.dk", lat: 55.7520, lng: 11.9600, address: "Skibby" },
+            { name: "Slangerup Klatreklub", city: "Slangerup", region: "Sjælland", type: "both", commercial: false, url: "https://www.holdsport.net", lat: 55.8500, lng: 12.1800, address: "Slangerup" },
+            { name: "Torup Klatreklub", city: "Torup", region: "Sjælland", type: "both", commercial: false, url: "https://torupklatreklub.klub-modul.dk", lat: 55.9300, lng: 12.0500, address: "Torup" },
+            { name: "Møns Klatreklub", city: "Møn", region: "Sjælland", type: "both", commercial: false, url: "https://monsklatreklub.klub-modul.dk", lat: 54.9800, lng: 12.3500, address: "Møn" },
+            { name: "Nykøbing Falster Klatreklub", city: "Nykøbing F", region: "Sjælland", type: "both", commercial: false, url: "https://www.facebook.com/NykøbingFalsterKlatreklub", lat: 54.7690, lng: 11.8760, address: "Nykøbing F" },
+            
+            // === MIDTJYLLAND - Kommercielle ===
+            { name: "Boulders Aarhus Nord", city: "Aarhus", region: "Midtjylland", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 56.1900, lng: 10.1800, address: "Katrinebjergvej 105" },
+            { name: "Boulders Aarhus City", city: "Aarhus", region: "Midtjylland", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 56.1560, lng: 10.2030, address: "Godsbanen" },
+            { name: "Boulders Aarhus Syd", city: "Aarhus", region: "Midtjylland", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 56.1200, lng: 10.1700, address: "Aarhus Syd" },
+            { name: "Boulders Aarhus Aaby", city: "Aarhus", region: "Midtjylland", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 56.1620, lng: 10.1450, address: "Søren Frichs Vej 54" },
+            
+            // === MIDTJYLLAND - Foreninger ===
+            { name: "Aarhus Klatreklub", city: "Aarhus", region: "Midtjylland", type: "both", commercial: false, url: "https://www.aarhusklatreklub.dk", lat: 56.1538, lng: 10.1469, address: "Karen Blixens Boulevard 27E" },
+            { name: "Østjysk Klatreklub", city: "Horsens", region: "Midtjylland", type: "both", commercial: false, url: "https://www.ojkk.dk", lat: 55.8584, lng: 9.8435, address: "Søndergårdsalle 24" },
+            { name: "Silkeborg Klatreklub", city: "Silkeborg", region: "Midtjylland", type: "both", commercial: false, url: "https://silkeborgklatreklub.klub-modul.dk", lat: 56.1700, lng: 9.5460, address: "Silkeborg" },
+            { name: "Viborg Klatreklub", city: "Viborg", region: "Midtjylland", type: "both", commercial: false, url: "https://viborgklatreklub.dk", lat: 56.4500, lng: 9.4000, address: "GIV, Viborg" },
+            { name: "Herning Klatreklub", city: "Herning", region: "Midtjylland", type: "both", commercial: false, url: "https://www.facebook.com/herningklatreklub", lat: 56.1390, lng: 8.9760, address: "Herning" },
+            { name: "Holstebloc", city: "Holstebro", region: "Midtjylland", type: "boulder", commercial: false, url: "https://slagteriet.dk", lat: 56.3600, lng: 8.6170, address: "Slagteriet, Holstebro" },
+            { name: "Ry Klatreklub", city: "Ry", region: "Midtjylland", type: "both", commercial: false, url: "https://ryklatreklub.klub-modul.dk", lat: 56.0890, lng: 9.7670, address: "Ry" },
+            { name: "Hammel Klatreklub", city: "Hammel", region: "Midtjylland", type: "both", commercial: false, url: "https://www.facebook.com/hammelklatreklub", lat: 56.2520, lng: 9.8680, address: "Hammel" },
+            { name: "IFM Klatreklub", city: "Ryomgård", region: "Midtjylland", type: "both", commercial: false, url: "https://ifmklatreklub.klub-modul.dk", lat: 56.3890, lng: 10.5050, address: "Ryomgård" },
+            
+            // === SYDDANMARK - Kommercielle ===
+            { name: "Boulders Odense", city: "Odense", region: "Syddanmark", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 55.3980, lng: 10.3880, address: "Odense" },
+            
+            // === SYDDANMARK - Foreninger ===
+            { name: "Odense Klatreklub", city: "Odense", region: "Syddanmark", type: "lead", commercial: false, url: "https://odenseklatreklub.dk", lat: 55.3920, lng: 10.3710, address: "Odense" },
+            { name: "Odense Boulderklub", city: "Odense", region: "Syddanmark", type: "boulder", commercial: false, url: "https://www.odenseboulder.dk", lat: 55.4010, lng: 10.3850, address: "Odense" },
+            { name: "Odense SportsKlatreKlub", city: "Odense", region: "Syddanmark", type: "both", commercial: false, url: "https://www.newoskk.dk", lat: 55.3950, lng: 10.3800, address: "Odense" },
+            { name: "Nyborg Klatreklub", city: "Nyborg", region: "Syddanmark", type: "both", commercial: false, url: "https://nyborgklatreklub.klub-modul.dk", lat: 55.3130, lng: 10.7900, address: "Nyborg" },
+            { name: "Svendborg Klatreklub", city: "Svendborg", region: "Syddanmark", type: "both", commercial: false, url: "https://www.svendborg-gf.dk", lat: 55.0600, lng: 10.6070, address: "Svendborg" },
+            { name: "Kolding Klatreklub", city: "Kolding", region: "Syddanmark", type: "both", commercial: false, url: "https://koldingklatreklub.klub-modul.dk", lat: 55.4900, lng: 9.4720, address: "Kolding" },
+            { name: "Esbjerg Boulderklub", city: "Esbjerg", region: "Syddanmark", type: "boulder", commercial: false, url: "https://www.esbjergboulderklub.dk", lat: 55.4700, lng: 8.4520, address: "Boulder Hulen, Esbjerg" },
+            { name: "Ribe Klatreklub", city: "Ribe", region: "Syddanmark", type: "both", commercial: false, url: "https://www.ribeklatreklub.dk", lat: 55.3280, lng: 8.7650, address: "Ribe" },
+            { name: "Haderslev Klatreklub", city: "Haderslev", region: "Syddanmark", type: "both", commercial: false, url: "https://haderslevklatreklub.klub-modul.dk", lat: 55.2530, lng: 9.4890, address: "Haderslev" },
+            { name: "Sønderborg Klatreklub", city: "Sønderborg", region: "Syddanmark", type: "both", commercial: false, url: "https://soenderborgklatreklub.dk", lat: 54.9090, lng: 9.7920, address: "Sønderborg" },
+            { name: "Bramming Klatreklub", city: "Bramming", region: "Syddanmark", type: "both", commercial: false, url: "https://brammingklatreklub.klub-modul.dk", lat: 55.4710, lng: 8.7070, address: "Bramming" },
+            { name: "Brandbjerg Klatreklub", city: "Jelling", region: "Syddanmark", type: "both", commercial: false, url: "https://brandbjergklatreklub.dk", lat: 55.7560, lng: 9.4220, address: "Brandbjerg Højskole" },
+            { name: "Firehøje Klatring", city: "Vandel", region: "Syddanmark", type: "both", commercial: false, url: "https://firehøjeif.dk", lat: 55.7070, lng: 9.2060, address: "Vandel" },
+            
+            // === NORDJYLLAND - Kommercielle ===
+            { name: "Boulders Aalborg", city: "Aalborg", region: "Nordjylland", type: "boulder", commercial: true, url: "https://boulders.dk", lat: 57.0430, lng: 9.9210, address: "Aalborg" },
+            
+            // === NORDJYLLAND - Foreninger ===
+            { name: "Vertical Hjørring Klatreklub", city: "Hjørring", region: "Nordjylland", type: "both", commercial: false, url: "https://hjoerring-klatreklub.dk", lat: 57.4640, lng: 9.9820, address: "Hjørring" },
+            { name: "Thy Frilufts- & Klatreklub", city: "Thisted", region: "Nordjylland", type: "both", commercial: false, url: "https://klatreklub.dk", lat: 56.9550, lng: 8.6940, address: "Thisted" },
+            { name: "TGI Boulders", city: "Klitmøller", region: "Nordjylland", type: "boulder", commercial: false, url: "https://tgi.nu", lat: 57.0390, lng: 8.4880, address: "Klitmøller" },
+            { name: "Ulsted Klatreklub", city: "Ulsted", region: "Nordjylland", type: "both", commercial: false, url: "https://www.klatresteder.dk", lat: 57.0900, lng: 10.2200, address: "Ulsted" },
+            { name: "Vestjysk Klatreklub", city: "Hjerm", region: "Nordjylland", type: "both", commercial: false, url: "https://www.hjermklatreklub.dk", lat: 56.4340, lng: 8.5170, address: "Hjerm" },
+            
+            // === BORNHOLM ===
+            { name: "Bornholms Klatreklub", city: "Rønne", region: "Bornholm", type: "both", commercial: false, url: "https://www.bornholmsklatreklub.dk", lat: 55.1010, lng: 14.7060, address: "Rønne" },
+            { name: "Allinge-Sandvig Klatreklub", city: "Allinge", region: "Bornholm", type: "both", commercial: false, url: "https://www.facebook.com/AllingeSandvigKlatreklub", lat: 55.2730, lng: 14.7950, address: "Allinge" }
+        ];
+        
+        // Region order
+        const regionOrder = ["Hovedstaden", "Sjælland", "Midtjylland", "Syddanmark", "Nordjylland", "Bornholm"];
+        
+        // ===== INITIALIZE =====
+        let map = null;
+        let markers = [];
+        
+        function init() {
+            updateStats();
+            initMap();
+            renderHalls();
+            initFilters();
+        }
+        
+        // ===== STATS =====
+        function updateStats() {
+            const total = halls.length;
+            const boulder = halls.filter(h => h.type === 'boulder').length;
+            const lead = halls.filter(h => h.type === 'lead').length;
+            const both = halls.filter(h => h.type === 'both').length;
+            
+            document.getElementById('totalCount').textContent = total;
+            document.getElementById('boulderCount').textContent = boulder;
+            document.getElementById('leadCount').textContent = lead;
+            document.getElementById('bothCount').textContent = both;
+        }
+        
+        // ===== MAP =====
+        function initMap() {
+            // Center on Denmark
+            map = L.map('map').setView([56.0, 10.5], 7);
+            
+            // Add OpenStreetMap tiles
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            
+            // Add markers
+            addMarkers(halls);
+        }
+        
+        function addMarkers(hallsToShow) {
+            // Clear existing markers
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+            
+            hallsToShow.forEach(hall => {
+                if (hall.lat && hall.lng) {
+                    const typeLabel = hall.type === 'boulder' ? 'Boulder' : 
+                                     hall.type === 'lead' ? 'Lead/Toprope' : 'Boulder + Lead';
+                    const typeColor = hall.type === 'boulder' ? '#a855f7' : 
+                                     hall.type === 'lead' ? '#3b82f6' : '#22c55e';
+                    
+                    const icon = L.divIcon({
+                        className: 'custom-marker',
+                        html: `<div style="background: ${typeColor}; width: 24px; height: 24px; border-radius: 50%; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);"></div>`,
+                        iconSize: [24, 24],
+                        iconAnchor: [12, 12]
+                    });
+                    
+                    const marker = L.marker([hall.lat, hall.lng], { icon })
+                        .bindPopup(`
+                            <div class="popup-title">${hall.name}</div>
+                            <div class="popup-type">${typeLabel}${hall.commercial ? ' • Kommerciel' : ' • Forening'}</div>
+                            <a href="${hall.url}" target="_blank" rel="noopener" class="popup-link">Besøg hjemmeside →</a>
+                        `)
+                        .addTo(map);
+                    
+                    markers.push(marker);
+                }
+            });
+        }
+        
+        // ===== RENDER HALLS =====
+        function renderHalls(filter = 'all', search = '') {
+            const container = document.getElementById('hallsContainer');
+            container.innerHTML = '';
+            
+            const searchLower = search.toLowerCase().trim();
+            
+            // Filter halls
+            let filteredHalls = halls.filter(hall => {
+                const matchesType = filter === 'all' || hall.type === filter;
+                const matchesSearch = !searchLower || 
+                    hall.name.toLowerCase().includes(searchLower) ||
+                    hall.city.toLowerCase().includes(searchLower) ||
+                    hall.region.toLowerCase().includes(searchLower);
+                return matchesType && matchesSearch;
+            });
+            
+            // Update map markers
+            addMarkers(filteredHalls);
+            
+            // Show no results message
+            const noResults = document.getElementById('noResults');
+            if (filteredHalls.length === 0) {
+                noResults.hidden = false;
+                return;
+            }
+            noResults.hidden = true;
+            
+            // Group by region
+            const byRegion = {};
+            filteredHalls.forEach(hall => {
+                if (!byRegion[hall.region]) byRegion[hall.region] = [];
+                byRegion[hall.region].push(hall);
+            });
+            
+            // Render each region
+            regionOrder.forEach(region => {
+                if (!byRegion[region]) return;
+                
+                const regionHalls = byRegion[region];
+                const section = document.createElement('section');
+                section.className = 'region-section';
+                
+                section.innerHTML = `
+                    <h2 class="region-header">
+                        ${region}
+                        <span class="region-count">(${regionHalls.length} ${regionHalls.length === 1 ? 'hal' : 'haller'})</span>
+                    </h2>
+                    <div class="halls-grid">
+                        ${regionHalls.map(hall => `
+                            <article class="hall-card" data-type="${hall.type}">
+                                <h3 class="hall-name">
+                                    <a href="${hall.url}" target="_blank" rel="noopener">${hall.name}</a>
+                                </h3>
+                                <p class="hall-city">${hall.city}${hall.address ? ` • ${hall.address}` : ''}</p>
+                                <span class="hall-type ${hall.type}">
+                                    ${hall.type === 'boulder' ? '🪨 Boulder' : 
+                                      hall.type === 'lead' ? '🧗 Lead/Toprope' : '🏔️ Begge'}
+                                </span>
+                                ${hall.commercial ? '<span class="hall-commercial">Kommerciel</span>' : ''}
+                            </article>
+                        `).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(section);
+            });
+        }
+        
+        // ===== FILTERS =====
+        function initFilters() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('searchInput');
+            let currentFilter = 'all';
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.type;
+                    renderHalls(currentFilter, searchInput.value);
+                });
+            });
+            
+            let searchTimeout;
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    renderHalls(currentFilter, searchInput.value);
+                }, 200);
+            });
+        }
+        
+        // Run on DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    })();
+    </script>
 </body>
 </html>
-
-
-

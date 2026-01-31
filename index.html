@@ -23,10 +23,20 @@
     <meta name="twitter:image" content="https://boulder.holstjensen.nu/og-image.png">
     
     <!-- Additional SEO -->
-    <meta name="keywords" content="bouldering, klatring, klatretermer, flashcards, lær at klatre, climbing terminology, dansk, crimp, dyno, sloper, boulder">
+    <meta name="keywords" content="bouldering, klatring, klatretermer, flashcards, lær at klatre, climbing terminology, dansk, crimp, dyno, sloper, boulder, greb, grebteknikker, klatrevæg, indoor klatring">
     <meta name="author" content="Mahope">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="googlebot" content="index, follow">
+    <meta name="language" content="Danish">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="geo.region" content="DK">
+    <meta name="geo.placename" content="Denmark">
     <link rel="canonical" href="https://boulder.holstjensen.nu/">
+    
+    <!-- Alternate language hints -->
+    <link rel="alternate" hreflang="da" href="https://boulder.holstjensen.nu/">
+    <link rel="alternate" hreflang="x-default" href="https://boulder.holstjensen.nu/">
     
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧗</text></svg>">
@@ -46,42 +56,108 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css?v=20260131">
+    <link rel="preload" href="styles.css?v=20260131b" as="style">
+    <link rel="stylesheet" href="styles.css?v=20260131b">
     
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Bouldering Lingo",
-        "description": "Lær over 100 klatretermer med interaktive flashcards. Perfekt til begyndere og erfarne bouldering- og klatreenthusiaster.",
-        "url": "https://boulder.holstjensen.nu/",
-        "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Any",
-        "browserRequirements": "Requires JavaScript",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "DKK"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Mahope",
-            "url": "https://mahope.dk"
-        },
-        "inLanguage": "da",
-        "keywords": "bouldering, klatring, klatretermer, flashcards, climbing terminology"
+        "@graph": [
+            {
+                "@type": "WebApplication",
+                "@id": "https://boulder.holstjensen.nu/#app",
+                "name": "Bouldering Lingo",
+                "description": "Lær over 100 klatretermer med interaktive flashcards. Perfekt til begyndere og erfarne bouldering- og klatreenthusiaster.",
+                "url": "https://boulder.holstjensen.nu/",
+                "applicationCategory": "EducationalApplication",
+                "operatingSystem": "Any",
+                "browserRequirements": "Requires JavaScript",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "DKK"
+                },
+                "author": {
+                    "@type": "Organization",
+                    "name": "Mahope",
+                    "url": "https://mahope.dk"
+                },
+                "inLanguage": "da",
+                "isAccessibleForFree": true,
+                "featureList": ["Flashcards", "Kategorier", "Progresstracking", "Mørkt og lyst tema", "Tastatur genveje"]
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://boulder.holstjensen.nu/#website",
+                "url": "https://boulder.holstjensen.nu/",
+                "name": "Bouldering Lingo",
+                "description": "Dansk klatre-ordbog med over 100 bouldering og klatretermer",
+                "inLanguage": "da"
+            },
+            {
+                "@type": "FAQPage",
+                "@id": "https://boulder.holstjensen.nu/#faq",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Hvad er en crimp?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Et greb hvor fingrene er bøjet i anden led og presser ned på en lille kant eller liste. Meget kraftfuldt men belastende for fingrene."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Hvad er en dyno i klatring?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Et dynamisk spring hvor man slipper alle greb/trin for at fange et nyt greb. Kommer fra 'dynamisk bevægelse'."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Hvad betyder sloper?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Et rundt, skråt greb uden kant, som holdes primært med friktion. Kræver god kropsposition og åben hånd."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Hvad er bouldering?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Klatring på lave vægge (typisk 3-5 meter) uden reb og sele. Man bruger tykke måtter til at lande på ved fald."
+                        }
+                    }
+                ]
+            },
+            {
+                "@type": "ItemList",
+                "@id": "https://boulder.holstjensen.nu/#categories",
+                "name": "Klatreterm Kategorier",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Greb", "description": "Forskellige typer klatregreb som crimp, sloper, pinch, jug"},
+                    {"@type": "ListItem", "position": 2, "name": "Bevægelser", "description": "Klatrebevægelser som dyno, heel hook, flagging, mantle"},
+                    {"@type": "ListItem", "position": 3, "name": "Gradering", "description": "Graderingssystemer som V-skala, Font-skala, IRCRA"},
+                    {"@type": "ListItem", "position": 4, "name": "Kropsdele", "description": "Kropsdele og teknikker som hoftevrid, core tension"},
+                    {"@type": "ListItem", "position": 5, "name": "Udstyr", "description": "Klatreudstyr som chalk, crashpad, klatresko"},
+                    {"@type": "ListItem", "position": 6, "name": "Kultur", "description": "Klatrekultur og etikette som beta, send, projekt"}
+                ]
+            }
+        ]
     }
     </script>
 </head>
 <body>
-    <div class="app">
-        <header>
+    <div class="app" role="main">
+        <header role="banner">
             <div class="header-top">
                 <h1>🧗 Bouldering Lingo</h1>
-                <button class="theme-toggle" id="themeToggle" aria-label="Skift tema">
-                    <span class="theme-icon sun">☀️</span>
-                    <span class="theme-icon moon">🌙</span>
+                <button class="theme-toggle" id="themeToggle" aria-label="Skift mellem lyst og mørkt tema" title="Skift tema">
+                    <span class="theme-icon sun" aria-hidden="true">☀️</span>
+                    <span class="theme-icon moon" aria-hidden="true">🌙</span>
                 </button>
             </div>
             <p class="subtitle">Lær klatretermer med flashcards</p>
@@ -104,54 +180,54 @@
             </div>
         </div>
 
-        <div class="card-container" id="cardContainer">
-            <div class="card" id="flashcard">
+        <div class="card-container" id="cardContainer" role="region" aria-label="Flashcard område">
+            <div class="card" id="flashcard" role="button" tabindex="0" aria-label="Flashcard - klik eller tryk mellemrum for at vende">
                 <div class="card-inner">
-                    <div class="card-front">
-                        <span class="card-label">Term</span>
-                        <span class="category-badge" id="categoryBadge"></span>
+                    <div class="card-front" aria-live="polite">
+                        <span class="card-label" aria-hidden="true">Term</span>
+                        <span class="category-badge" id="categoryBadge" role="status"></span>
                         <h2 id="term">Loading...</h2>
-                        <p class="hint">
+                        <p class="hint" aria-hidden="true">
                             <span class="hint-tap">Tryk for at vende</span>
                             <span class="hint-desktop">Klik eller tryk mellemrum</span>
                         </p>
                     </div>
-                    <div class="card-back">
-                        <span class="card-label">Forklaring</span>
+                    <div class="card-back" aria-live="polite">
+                        <span class="card-label" aria-hidden="true">Forklaring</span>
                         <div class="card-back-content">
                             <p id="definition">Loading...</p>
-                            <p class="example" id="example"></p>
+                            <p class="example" id="example" aria-label="Eksempel på brug"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="controls">
-            <button class="btn btn-skip" id="skipBtn">
-                <span class="btn-icon">→</span>
+        <nav class="controls" role="navigation" aria-label="Kort navigation">
+            <button class="btn btn-skip" id="skipBtn" aria-label="Spring dette kort over og gå til næste" title="Genvej: højrepil">
+                <span class="btn-icon" aria-hidden="true">→</span>
                 <span class="btn-text">Spring over</span>
             </button>
-            <button class="btn btn-knew" id="knewBtn">
-                <span class="btn-icon">✓</span>
+            <button class="btn btn-knew" id="knewBtn" aria-label="Markér at du vidste svaret" title="Genvej: K">
+                <span class="btn-icon" aria-hidden="true">✓</span>
                 <span class="btn-text">Vidste det!</span>
             </button>
-        </div>
+        </nav>
 
-        <div class="categories">
-            <span class="category-label">Kategorier</span>
-            <div class="category-buttons" id="categoryButtons">
+        <section class="categories" role="region" aria-labelledby="category-heading">
+            <span class="category-label" id="category-heading">Kategorier</span>
+            <div class="category-buttons" id="categoryButtons" role="group" aria-label="Vælg kategori at øve">
                 <!-- Generated by JS -->
             </div>
-        </div>
+        </section>
 
-        <footer>
-            <button class="btn-link" id="shuffleBtn">
-                <span class="link-icon">🔀</span> Bland kortene
+        <footer role="contentinfo" aria-label="App kontroller">
+            <button class="btn-link" id="shuffleBtn" aria-label="Bland rækkefølgen af alle kort">
+                <span class="link-icon" aria-hidden="true">🔀</span> Bland kortene
             </button>
-            <span class="footer-divider">•</span>
-            <button class="btn-link" id="resetBtn">
-                <span class="link-icon">↺</span> Start forfra
+            <span class="footer-divider" aria-hidden="true">•</span>
+            <button class="btn-link" id="resetBtn" aria-label="Nulstil spillet og start forfra">
+                <span class="link-icon" aria-hidden="true">↺</span> Start forfra
             </button>
         </footer>
 
@@ -163,8 +239,8 @@
         </div>
     </div>
 
-    <footer class="site-footer">
-        <p>Lavet med ❤️ af <a href="https://mahope.dk" target="_blank" rel="noopener">Mahope</a></p>
+    <footer class="site-footer" role="contentinfo">
+        <p>Lavet med <span aria-label="kærlighed">❤️</span> af <a href="https://mahope.dk" target="_blank" rel="noopener noreferrer" aria-label="Besøg Mahope's hjemmeside">Mahope</a></p>
     </footer>
 
     <script src="data.js" defer></script>
